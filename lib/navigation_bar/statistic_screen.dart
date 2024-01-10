@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:readingappv1/bar_graph/bar_graph.dart';
 
 class StatisticScreen extends StatefulWidget {
   const StatisticScreen({
@@ -11,6 +12,15 @@ class StatisticScreen extends StatefulWidget {
 }
 
 class _StatisticScreenState extends State<StatisticScreen> {
+  List<double> weeklySummary = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -273,19 +283,16 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   ),
                 ],
               ),
-              //ChartBar
-              // BarChart(BarChartData(
-              //   maxY: 150,
-              //   minY: 0,
-              //   gridData: FlGridData(show: false),
-              //   borderData: FlBorderData(show: false),
-              //   titlesData: FlTitlesData(
-              //       bottomTitles: AxisTitles(
-              //           sideTitles: SideTitles(
-              //     showTitles: true,
-              //   ))),
-              // )),
-
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  height: 200,
+                  width: 350,
+                  child: Container(
+                      color: Color(0xffE8EFF5),
+                      child: MyBarGraph(weeklySummary: weeklySummary)),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(22, 25, 0, 0),
                 child: Text(
@@ -402,6 +409,31 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  height: 200,
+                  width: 350,
+                  child: Container(
+                      color: Color(0xffE8EFF5),
+                      child: MyBarGraph(weeklySummary: weeklySummary)),
+                ),
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Статистик Шинэчлэх',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.normal,
+                      fontFamily: 'InterTight',
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

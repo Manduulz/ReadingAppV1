@@ -15,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  String selectedGender = '';
   final dio = Dio();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -50,10 +51,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Future<void> signUp() async {
     log('signup called');
     dynamic body = {
-      'id': 0,
+      'id': 20,
       'firstname': _firstNameController.text,
       'lastname': _lastNameController.text,
-      'gender': 'Male',
+      'gender': TextEditingController(text: selectedGender),
       'email': _emailController.text,
       'phone': _phoneNumberController.text,
       'birthday': _birthDayController.text,
@@ -61,6 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       'createdDate': _birthDayController.text,
       'schoolId': 0,
       'password': _passwordController.text,
+      'role': 'String',
     };
     log('body : $body');
 
@@ -82,6 +84,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _passwordController.dispose();
   }
 
+  _showGenderPicker(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+            height: 150,
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    'Эрэгтэй',
+                    style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Color.fromRGBO(0, 124, 214, 0.50),
+                    ),
+                  ),
+                  onTap: () {
+                    _setSelectedGender('Эрэгтэй');
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'Эмэгтэй',
+                    style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Color.fromRGBO(0, 124, 214, 0.50),
+                    ),
+                  ),
+                  onTap: () {
+                    _setSelectedGender('Эмэгтэй');
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  _setSelectedGender(String gender) {
+    setState(() {
+      selectedGender = gender;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: 30),
+          padding: EdgeInsets.only(left: 5),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -122,6 +176,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 51,
                 child: TextField(
                   controller: _firstNameController,
+                  keyboardType: TextInputType.name,
                   style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -146,6 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 51,
                 child: TextField(
                   controller: _lastNameController,
+                  keyboardType: TextInputType.name,
                   style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
                       prefixIcon: Icon(PhosphorIcons.user_circle,
@@ -163,27 +219,66 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(
-                width: 330,
-                height: 51,
-                child: TextField(
-                  controller: _birthDayController,
-                  readOnly: true,
-                  onTap: () => _selectDate(context),
-                  style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(PhosphorIcons.calendar_blank,
-                          color: Color.fromRGBO(0, 124, 214, 0.50)),
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide:
-                              BorderSide(color: Colors.lightBlueAccent)),
-                      hintText: 'Төрсөн Он Сар Өдөр',
-                      hintStyle:
-                          TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50))),
+              Padding(
+                padding: const EdgeInsets.only(left: 28.0),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 160,
+                      height: 51,
+                      child: TextField(
+                        controller: _birthDayController,
+                        readOnly: true,
+                        onTap: () => _selectDate(context),
+                        style:
+                            TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(PhosphorIcons.calendar_blank,
+                                color: Color.fromRGBO(0, 124, 214, 0.50)),
+                            border: InputBorder.none,
+                            filled: true,
+                            fillColor: Colors.white,
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide:
+                                    BorderSide(color: Colors.lightBlueAccent)),
+                            hintText: 'Төрсөн Он Сар Өдөр',
+                            hintStyle: TextStyle(
+                                color: Color.fromRGBO(0, 124, 214, 0.50))),
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 10)),
+                    SizedBox(
+                      width: 160,
+                      height: 51,
+                      child: TextField(
+                        controller: TextEditingController(text: selectedGender),
+                        readOnly: true,
+                        style:
+                            TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(PhosphorIcons.user_circle,
+                              color: Color.fromRGBO(0, 124, 214, 0.50)),
+                          border: InputBorder.none,
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide:
+                                  BorderSide(color: Colors.lightBlueAccent)),
+                          hintText: 'Хүйс',
+                          hintStyle: TextStyle(
+                            color: Color.fromRGBO(0, 124, 214, 0.50),
+                          ),
+                        ),
+                        onTap: () {
+                          _showGenderPicker(context);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: 20),

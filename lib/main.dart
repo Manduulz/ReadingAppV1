@@ -10,6 +10,7 @@ import 'package:readingappv1/navigation_bar/statistic_screen.dart';
 import 'package:readingappv1/profile_settings/change_account_screen.dart';
 import 'package:readingappv1/profile_settings/information_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
+import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/sign_up_screen.dart';
 
 void main() {
@@ -28,6 +29,7 @@ void main() {
       GetPage(name: '/privacy', page: () => PrivacyScreen()),
       GetPage(name: '/changeacc', page: () => ChangeAccounts()),
       GetPage(name: '/graph', page: () => BarGraphBox()),
+      GetPage(name: '/readinghome', page: () => ReadingScreen()),
     ],
   ));
 }

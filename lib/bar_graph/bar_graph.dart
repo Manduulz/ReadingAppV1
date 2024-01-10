@@ -3,15 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:readingappv1/bar_graph/bar_data.dart';
 
 class MyBarGraph extends StatefulWidget {
-  List<double> weeklySummary = [
-    40,
-    90,
-    98,
-    132,
-    101,
-    46,
-    68,
-  ];
+  final List weeklySummary;
   MyBarGraph({super.key, required this.weeklySummary});
 
   @override
@@ -22,13 +14,13 @@ class _MyBarGraphState extends State<MyBarGraph> {
   @override
   Widget build(BuildContext context) {
     BarData myBarData = BarData(
-      monAmount: widget.weeklySummary[1],
-      tueAmount: widget.weeklySummary[2],
-      wedAmount: widget.weeklySummary[3],
-      thuAmount: widget.weeklySummary[4],
-      friAmount: widget.weeklySummary[5],
-      satAmount: widget.weeklySummary[6],
-      sunAmount: widget.weeklySummary[7],
+      monAmount: widget.weeklySummary[0],
+      tueAmount: widget.weeklySummary[1],
+      wedAmount: widget.weeklySummary[2],
+      thuAmount: widget.weeklySummary[3],
+      friAmount: widget.weeklySummary[4],
+      satAmount: widget.weeklySummary[5],
+      sunAmount: widget.weeklySummary[6],
     );
     myBarData.initializeBarData();
     return BarChart(
@@ -49,7 +41,13 @@ class _MyBarGraphState extends State<MyBarGraph> {
                 BarChartRodData(
                     toY: data.y,
                     color: Colors.blue,
-                    width: 20,
+                    width: 10,
+                    backDrawRodData: BackgroundBarChartRodData(
+                        show: true, toY: 150, color: Colors.grey)),
+                BarChartRodData(
+                    toY: data.y,
+                    color: Color(0xffFF9501),
+                    width: 10,
                     backDrawRodData: BackgroundBarChartRodData(
                         show: true, toY: 150, color: Colors.grey)),
               ]),
