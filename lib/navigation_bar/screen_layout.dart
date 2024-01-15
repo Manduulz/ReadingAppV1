@@ -125,7 +125,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: 85,
+        height: 65,
         child: CupertinoTabBar(
           backgroundColor: Color(0xffE8EFF5),
           onTap: navigationTapped,
@@ -139,6 +139,16 @@ class _ScreenLayoutState extends State<ScreenLayout> {
                       color: _page == 0 ? Color(0xff007CD6) : Colors.white,
                       size: 32,
                     ),
+                    Text(
+                      'Нүүр',
+                      style: TextStyle(
+                        fontFamily: 'InterTight',
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 10,
+                        color: _page == 0 ? Color(0xff007CD6) : Colors.white,
+                      ),
+                    )
                   ],
                 ),
                 backgroundColor: Colors.white,
@@ -150,8 +160,18 @@ class _ScreenLayoutState extends State<ScreenLayout> {
                     Icon(
                       PhosphorIcons.chart_bar,
                       color: _page == 1 ? Color(0xff007CD6) : Colors.white,
-                      size: 52,
+                      size: 32,
                     ),
+                    Text(
+                      'Статистик',
+                      style: TextStyle(
+                        fontFamily: 'InterTight',
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 10,
+                        color: _page == 1 ? Color(0xff007CD6) : Colors.white,
+                      ),
+                    )
                   ],
                 ),
                 backgroundColor: Colors.white,
@@ -165,6 +185,16 @@ class _ScreenLayoutState extends State<ScreenLayout> {
                       color: _page == 2 ? Color(0xff007CD6) : Colors.white,
                       size: 32,
                     ),
+                    Text(
+                      'Хэрэглэгч',
+                      style: TextStyle(
+                        fontFamily: 'InterTight',
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 10,
+                        color: _page == 2 ? Color(0xff007CD6) : Colors.white,
+                      ),
+                    )
                   ],
                 ),
                 backgroundColor: Colors.white,

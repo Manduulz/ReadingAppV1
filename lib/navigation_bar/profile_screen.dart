@@ -18,12 +18,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0.0,
         backgroundColor: Color(0xffE8EFF5),
         centerTitle: true,
-
-        // bottom: PreferredSize(
-        //   preferredSize: Size.fromHeight(kToolbarHeight),
-        //   child: Padding(padding: const EdgeInsets.all(20.0)),
-        // ),
-
         title: Text(
           'Хувийн мэдээлэл',
           style: TextStyle(
@@ -81,11 +75,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onPressed: () {
                       Get.toNamed('/information');
                     },
-                    color: Colors.blue,
+                    color: Color(0xffCCE8D6),
                     child: Icon(
-                      PhosphorIcons.user_circle,
+                      PhosphorIcons.user,
                       size: 20,
-                      color: Colors.black,
+                      color: Color(0xff008B31),
                     ),
                     shape: CircleBorder(),
                   ),
@@ -105,53 +99,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   )
                 ],
               ),
-              // Row(
-              //   children: [
-              //     MaterialButton(
-              //       onPressed: () {
-              //         Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //                 builder: (context) => TrophyScreen()));
-              //       },
-              //       color: Colors.orangeAccent,
-              //       child: Icon(
-              //         Icons.radar,
-              //         size: 30,
-              //         color: Colors.yellow,
-              //       ),
-              //       shape: CircleBorder(),
-              //     ),
-              //     TextButton(
-              //       onPressed: () {
-              //         Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //                 builder: (context) => TrophyScreen()));
-              //       },
-              //       child: Text(
-              //         'Амжилтууд',
-              //         style: TextStyle(
-              //             fontSize: 16,
-              //             fontWeight: FontWeight.w500,
-              //             fontStyle: FontStyle.normal,
-              //             fontFamily: 'InterTight',
-              //             color: Colors.black),
-              //       ),
-              //     )
-              //   ],
-              // ),
               Row(
                 children: [
                   MaterialButton(
                     onPressed: () {
                       Get.toNamed('/privacy');
                     },
-                    color: Colors.grey,
+                    color: Color.fromRGBO(0, 0, 0, 0.10),
                     child: Icon(
                       PhosphorIcons.shield,
                       size: 20,
-                      color: Colors.black,
+                      color: Color(0xff505050),
                     ),
                     shape: CircleBorder(),
                   ),
@@ -172,80 +130,93 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               Padding(padding: EdgeInsets.only(top: 25)),
-              Padding(
-                padding: const EdgeInsets.only(left: 28.0),
-                child: Column(
-                  children: [
-                    Align(
-                        alignment: Alignment.centerLeft,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0),
+                    child: Text(
+                      'Миний хаяг',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontFamily: 'InterTight',
+                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25.0),
                         child: Text(
-                          'Миний хаяг',
+                          'Бүртгэл солих',
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontFamily: 'InterTight',
-                            color: Color.fromRGBO(0, 0, 0, 0.50),
-                          ),
-                        )),
-                    Row(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
+                              fontFamily: 'InterTight',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Colors.black),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed('/changeacc');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 25.0),
                           child: Text(
-                            'Бүртгэл солих',
+                            'Солих >',
                             style: TextStyle(
-                                fontFamily: 'InterTight',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
                                 fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.black),
+                                fontFamily: 'InterTight',
+                                color: Color.fromRGBO(0, 0, 0, 0.50)),
                           ),
                         ),
-                        Padding(padding: EdgeInsets.only(left: 160)),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20),
+                    child: Container(
+                      height: 1,
+                      color: Colors.grey,
+                      width: double.infinity,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Row(
+                      children: [
+                        IconButton(
                             onPressed: () {
-                              Get.toNamed('/changeacc');
+                              Get.toNamed('/login');
                             },
-                            child: Text(
-                              'Солих >',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  fontFamily: 'InterTight',
-                                  color: Color.fromRGBO(0, 0, 0, 0.50)),
+                            icon: Icon(PhosphorIcons.sign_out)),
+                        TextButton(
+                          onPressed: () {
+                            Get.toNamed('/login');
+                          },
+                          child: Text(
+                            'Гарах',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'InterTight',
+                              color: Colors.black,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 75, right: 25),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        onPressed: () {
-                          showAlertDialog(context);
-                        },
-                        child: Text(
-                          'Гарах',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontFamily: 'InterTight',
-                            color: Color(0xffEC4F49),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  )
+                ],
               )
             ],
           ),
@@ -254,101 +225,102 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void showAlertDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            insetPadding: EdgeInsets.all(30),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            content: SizedBox(
-              width: 332,
-              height: 126,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 16)),
-                  SizedBox(
-                      width: 200,
-                      height: 50,
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          'Та гарах уу ?',
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'InterTight',
-                              color: Colors.black),
-                        ),
-                      )),
-                ],
-              ),
-            ),
-            actions: [
-              Row(
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)))),
-                      onPressed: () {
-                        Get.toNamed('/login');
-                      },
-                      child: Container(
-                        width: 64,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25)),
-                        padding: EdgeInsets.only(top: 8),
-                        child: Text(
-                          'Тийм',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'InterTight',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )),
-                  Padding(padding: EdgeInsets.only(left: 50)),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueGrey,
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)))),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: 64,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25)),
-                        padding: EdgeInsets.only(top: 8),
-                        child: Text(
-                          'Үгүй',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'InterTight',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )),
-                ],
-              ),
-              // Padding(padding: EdgeInsets.only(right: 20)),
-
-              // Padding(padding: EdgeInsets.only(right: 18))
-            ],
-          );
-        });
-  }
+  // void showAlertDialog(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           insetPadding: EdgeInsets.all(30),
+  //           shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.all(Radius.circular(30))),
+  //           content: SizedBox(
+  //             width: 332,
+  //             height: 126,
+  //             child: Column(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Padding(padding: EdgeInsets.only(top: 16)),
+  //                 SizedBox(
+  //                     width: 200,
+  //                     height: 50,
+  //                     child: Align(
+  //                       alignment: Alignment.topCenter,
+  //                       child: Text(
+  //                         'Та гарах уу ?',
+  //                         style: TextStyle(
+  //                             fontSize: 25,
+  //                             fontWeight: FontWeight.bold,
+  //                             fontFamily: 'InterTight',
+  //                             color: Colors.black),
+  //                       ),
+  //                     )),
+  //               ],
+  //             ),
+  //           ),
+  //           actions: [
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //               children: [
+  //                 ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                         backgroundColor: Colors.grey,
+  //                         shape: RoundedRectangleBorder(
+  //                             borderRadius:
+  //                                 BorderRadius.all(Radius.circular(25)))),
+  //                     onPressed: () {
+  //                       Get.toNamed('/login');
+  //                     },
+  //                     child: Container(
+  //                       width: 64,
+  //                       height: 45,
+  //                       decoration: BoxDecoration(
+  //                           borderRadius: BorderRadius.circular(25)),
+  //                       padding: EdgeInsets.only(top: 8),
+  //                       child: Text(
+  //                         'Тийм',
+  //                         textAlign: TextAlign.center,
+  //                         style: TextStyle(
+  //                           fontSize: 15,
+  //                           fontFamily: 'InterTight',
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Colors.white,
+  //                         ),
+  //                       ),
+  //                     )),
+  //                 ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                         backgroundColor: Colors.blueGrey,
+  //                         shape: RoundedRectangleBorder(
+  //                             borderRadius:
+  //                                 BorderRadius.all(Radius.circular(25)))),
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                     child: Container(
+  //                       width: 64,
+  //                       height: 45,
+  //                       decoration: BoxDecoration(
+  //                           borderRadius: BorderRadius.circular(25)),
+  //                       padding: EdgeInsets.only(top: 8),
+  //                       child: Text(
+  //                         'Үгүй',
+  //                         textAlign: TextAlign.center,
+  //                         style: TextStyle(
+  //                           fontSize: 15,
+  //                           fontFamily: 'InterTight',
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Colors.white,
+  //                         ),
+  //                       ),
+  //                     )),
+  //               ],
+  //             ),
+  //             // Padding(padding: EdgeInsets.only(right: 20)),
+  //
+  //             // Padding(padding: EdgeInsets.only(right: 18))
+  //           ],
+  //         );
+  //       });
+  // }
+// AlertDialog
 }

@@ -220,7 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: 20),
               Padding(
-                padding: const EdgeInsets.only(left: 28.0),
+                padding: const EdgeInsets.only(left: 37.0),
                 child: Row(
                   children: [
                     SizedBox(
@@ -350,7 +350,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50))),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(0, 124, 214, 0.50),
@@ -360,11 +360,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     signUp();
                   },
                   child: Container(
+                    alignment: Alignment.center,
                     width: 280,
                     height: 50,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(2)),
-                    padding: EdgeInsets.only(top: 10),
                     child: Text(
                       textAlign: TextAlign.center,
                       'Бүртгэл үүсгэх',

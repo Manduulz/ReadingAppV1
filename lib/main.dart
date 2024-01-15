@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/bar_graph/bar_graph_page.dart';
+import 'package:readingappv1/classes/circle_loading.dart';
+import 'package:readingappv1/classes/voice_recorder.dart';
 import 'package:readingappv1/forgot_password_screen.dart';
 import 'package:readingappv1/log_in_screen.dart';
+import 'package:readingappv1/navigation_bar/book_detail_screen.dart';
+import 'package:readingappv1/navigation_bar/books_screen.dart';
+import 'package:readingappv1/navigation_bar/idiom_screen.dart';
 import 'package:readingappv1/navigation_bar/nav_home_screen.dart';
 import 'package:readingappv1/navigation_bar/profile_screen.dart';
 import 'package:readingappv1/navigation_bar/screen_layout.dart';
@@ -30,6 +35,11 @@ void main() {
       GetPage(name: '/changeacc', page: () => ChangeAccounts()),
       GetPage(name: '/graph', page: () => BarGraphBox()),
       GetPage(name: '/readinghome', page: () => ReadingScreen()),
+      GetPage(name: '/books', page: () => BooksScreen()),
+      GetPage(name: '/idiom', page: () => IdiomScreen()),
+      GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
+      GetPage(name: '/loading', page: () => MyLoadingScreen()),
+      GetPage(name: '/voice', page: () => VoiceRecorder()),
     ],
   ));
 }

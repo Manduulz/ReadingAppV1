@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:readingappv1/navigation_bar/screen_layout.dart';
 
 class ReadingScreen extends StatefulWidget {
   const ReadingScreen({super.key});
@@ -18,8 +17,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
         backgroundColor: Color(0xffE8EFF5),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ScreenLayout()));
+            Navigator.pop(context);
           },
           icon: Icon(
             PhosphorIcons.arrow_left,

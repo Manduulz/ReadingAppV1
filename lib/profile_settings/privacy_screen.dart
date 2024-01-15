@@ -124,11 +124,11 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                         borderRadius: BorderRadius.circular(5))),
                 onPressed: () {},
                 child: Container(
+                  alignment: Alignment.center,
                   width: 280,
                   height: 50,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(2)),
-                  padding: EdgeInsets.only(top: 10),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Хадгалах',
