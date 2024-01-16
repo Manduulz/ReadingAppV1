@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:readingappv1/classes/play_stop.dart';
 
 class ReadingScreen extends StatefulWidget {
   const ReadingScreen({super.key});
@@ -106,6 +107,28 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       color: Colors.black,
                     ),
                   ),
+                  Container(
+                    width: 300,
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Slider(
+                            value: 0,
+                            onChanged: (double value) {
+                              setState(() {});
+                            }),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 68,
+                    height: 68,
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(55)),
+                    child: PlayStopButton(),
+                  )
                 ],
               ),
             )

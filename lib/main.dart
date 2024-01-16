@@ -19,27 +19,29 @@ import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/sign_up_screen.dart';
 
 void main() {
-  runApp(GetMaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: '/login',
-    getPages: [
-      GetPage(name: '/login', page: () => LogInScreen()),
-      GetPage(name: '/signup', page: () => SignUpScreen()),
-      GetPage(name: '/forgotpassword', page: () => ForgotPasswordScreen()),
-      GetPage(name: '/screenlayout', page: () => ScreenLayout()),
-      GetPage(name: '/navhome', page: () => navHomeScreen()),
-      GetPage(name: '/statistic', page: () => StatisticScreen()),
-      GetPage(name: '/profile', page: () => ProfileScreen()),
-      GetPage(name: '/information', page: () => InformationScreen()),
-      GetPage(name: '/privacy', page: () => PrivacyScreen()),
-      GetPage(name: '/changeacc', page: () => ChangeAccounts()),
-      GetPage(name: '/graph', page: () => BarGraphBox()),
-      GetPage(name: '/readinghome', page: () => ReadingScreen()),
-      GetPage(name: '/books', page: () => BooksScreen()),
-      GetPage(name: '/idiom', page: () => IdiomScreen()),
-      GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
-      GetPage(name: '/loading', page: () => MyLoadingScreen()),
-      GetPage(name: '/voice', page: () => VoiceRecorder()),
-    ],
-  ));
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/login',
+      getPages: [
+        GetPage(name: '/login', page: () => LogInScreen()),
+        GetPage(name: '/signup', page: () => SignUpScreen()),
+        GetPage(name: '/forgotpassword', page: () => ForgotPasswordScreen()),
+        GetPage(name: '/screenlayout', page: () => ScreenLayout()),
+        GetPage(name: '/navhome', page: () => navHomeScreen()),
+        GetPage(name: '/statistic', page: () => StatisticScreen()),
+        GetPage(name: '/profile', page: () => ProfileScreen()),
+        GetPage(name: '/information', page: () => InformationScreen()),
+        GetPage(name: '/privacy', page: () => PrivacyScreen()),
+        GetPage(name: '/changeacc', page: () => ChangeAccounts()),
+        GetPage(name: '/graph', page: () => BarGraphBox()),
+        GetPage(name: '/readinghome', page: () => ReadingScreen()),
+        GetPage(name: '/books', page: () => BooksScreen()),
+        GetPage(name: '/idiom', page: () => IdiomScreen()),
+        GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
+        GetPage(name: '/loading', page: () => MyLoadingScreen()),
+        GetPage(name: '/voice', page: () => VoiceRecorder()),
+      ],
+    ),
+  );
 }

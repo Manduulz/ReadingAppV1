@@ -30,6 +30,11 @@ class ApiProvider {
     dio.options.receiveTimeout = const Duration(seconds: 100);
     dio.transformer = SyncTransformer(jsonDecodeCallback: _tryParseJson);
 
+    tokenDio.options.baseUrl = baseUrl;
+    tokenDio.options.connectTimeout = const Duration(seconds: 100);
+    tokenDio.options.receiveTimeout = const Duration(seconds: 100);
+    tokenDio.transformer = SyncTransformer(jsonDecodeCallback: _tryParseJson);
+
     if (kDebugMode) {
       dio.interceptors.add(LogInterceptor(
           requestHeader: false, responseBody: true, requestBody: true));
