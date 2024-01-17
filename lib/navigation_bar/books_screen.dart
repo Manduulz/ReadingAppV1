@@ -1,6 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/classes/search_field.dart';
+import 'package:readingappv1/navigation_bar/book_item.dart';
+import 'package:readingappv1/service/api_helper.dart';
+
+import '../service/method.dart';
 
 class BooksScreen extends StatefulWidget {
   const BooksScreen({super.key});
@@ -12,6 +18,8 @@ class BooksScreen extends StatefulWidget {
 class _BooksScreenState extends State<BooksScreen> {
   int _page = 0;
   late PageController bookPageController;
+  RxList<dynamic> books = RxList([]);
+  RxBool isLoading = true.obs;
 
   @override
   void initState() {
@@ -25,8 +33,22 @@ class _BooksScreenState extends State<BooksScreen> {
     bookPageController.dispose();
   }
 
+  Future<void> getBooksList() async {
+    dynamic response = await ApiHelper.instance.sendHttpRequest(
+      urlPath: '/api/content/active',
+      method: Method.get,
+      headers: {'Authorization': 'Bearer B2ZOstS_47qjvE6LD4zHFRF1cnkbK4nILpttt9f-HJY'},
+    );
+
+    books.value = response;
+
+    log('setgel : $response');
+  }
+
   @override
   Widget build(BuildContext context) {
+    getBooksList();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -41,21 +63,17 @@ class _BooksScreenState extends State<BooksScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_rounded,
             color: Colors.black,
             size: 32,
           ),
         ),
-        title: Column(
+        title: const Column(
           children: [
             Text(
               'Хайлт',
-              style: TextStyle(
-                  fontFamily: 'InterTight',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 26,
-                  color: Colors.black),
+              style: TextStyle(fontFamily: 'InterTight', fontWeight: FontWeight.w400, fontSize: 26, color: Colors.black),
             ),
           ],
         ),
@@ -64,19 +82,15 @@ class _BooksScreenState extends State<BooksScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SearchField(),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0, top: 24),
+              const SearchField(),
+              const Padding(
+                padding: EdgeInsets.only(left: 30.0, top: 24),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Ангилал',
                     style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: Colors.black),
+                        fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
                   ),
                 ),
               ),
@@ -92,8 +106,7 @@ class _BooksScreenState extends State<BooksScreen> {
                         width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Бүгд',
                           style: TextStyle(
@@ -111,8 +124,7 @@ class _BooksScreenState extends State<BooksScreen> {
                         width: 99,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Хадгалсан ном',
                           style: TextStyle(
@@ -130,8 +142,7 @@ class _BooksScreenState extends State<BooksScreen> {
                         width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Архив',
                           style: TextStyle(
@@ -146,437 +157,18 @@ class _BooksScreenState extends State<BooksScreen> {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      Get.toNamed('/bookdetail');
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15,
-                              offset: Offset(2, 4))
-                        ],
-                      ),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15,
-                                offset: Offset(2, 4))
-                          ]),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(padding: EdgeInsets.only(top: 20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15,
-                                offset: Offset(2, 4))
-                          ]),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15,
-                                offset: Offset(2, 4))
-                          ]),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(padding: EdgeInsets.only(top: 20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15,
-                                offset: Offset(2, 4))
-                          ]),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 15,
-                                offset: Offset(2, 4))
-                          ]),
-                      child: SizedBox(
-                        width: 155,
-                        height: 201,
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
-                            Container(
-                              width: 135,
-                              height: 116,
-                              decoration: BoxDecoration(
-                                color: Color(0xffE8EFF5),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Өнхрүүш',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: 'InterTight',
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.normal,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      'Үлгэрийн ном',
-                                      style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const SizedBox(height: 20),
+              Obx(() {
+                return SizedBox(
+                  height: 400,
+                  child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                      itemCount: books.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return BookItem(detail: books[index]);
+                      }),
+                );
+              })
             ],
           ),
         ),

@@ -1,20 +1,40 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/classes/book_center_right_action.dart';
-import 'package:readingappv1/classes/tts.dart';
+import 'package:readingappv1/service/api_helper.dart';
 
-class BookDetailScreen extends StatefulWidget {
-  const BookDetailScreen({super.key});
+import '../service/method.dart';
 
-  @override
-  State<BookDetailScreen> createState() => _BookDetailScreenState();
-}
+class BookDetailScreen extends StatelessWidget {
+  final String bookId;
 
-class _BookDetailScreenState extends State<BookDetailScreen> {
-  final textToSpeech = TextToSpeech();
+  BookDetailScreen({required this.bookId, super.key});
+
+  RxMap<String, dynamic> bookDetail = RxMap({});
+  RxBool isLoading = true.obs;
+
+  Future<void> getBookDetail() async {
+    isLoading.value = true;
+
+    dynamic response = await ApiHelper.instance.sendHttpRequest(
+      urlPath: '/api/content/$bookId',
+      method: Method.get,
+      headers: {'Authorization': 'Bearer B2ZOstS_47qjvE6LD4zHFRF1cnkbK4nILpttt9f-HJY'},
+    );
+
+    isLoading.value = false;
+
+    log('wtf : $response');
+    bookDetail.value = response;
+  }
+
   @override
   Widget build(BuildContext context) {
+    getBookDetail();
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -24,215 +44,214 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_rounded,
             color: Color(0xff343330),
             size: 32,
           ),
         ),
-        actions: [CenterRightActionButton()],
+        actions: [const CenterRightActionButton()],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 250,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 15,
-                          offset: Offset(2, 4))
-                    ],
-                  ),
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: 200,
-                    height: 250,
-                  ),
-                ),
-                SizedBox(height: 28),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Номны нэр',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      fontFamily: 'InterTight',
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                Text(
-                  'Номны төрөл',
-                  style: TextStyle(
-                    fontFamily: 'InterTight',
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 28),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
+      body: Obx(() {
+        return SafeArea(
+          child: isLoading.value
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Container(
+                          height: 250,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
+                            ),
+                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))],
+                          ),
+                          alignment: Alignment.center,
+                          child: const SizedBox(
+                            width: 200,
+                            height: 250,
+                          ),
+                        ),
+                        const SizedBox(height: 28),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            bookDetail['name'] ?? '',
+                            style: const TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'InterTight',
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                         Text(
-                          'Үнэлгээ',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
+                          bookDetail['contentText'] ?? '',
+                          style: const TextStyle(
                             fontFamily: 'InterTight',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
                             color: Colors.black,
                           ),
                         ),
+                        const SizedBox(height: 28),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                PhosphorIcons.star,
-                                size: 18,
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
+                            Column(
+                              children: [
+                                const Text(
+                                  'Үнэлгээ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Icon(
+                                        PhosphorIcons.star,
+                                        size: 18,
+                                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Icon(
+                                        PhosphorIcons.star,
+                                        size: 18,
+                                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Icon(
+                                        PhosphorIcons.star,
+                                        size: 18,
+                                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Icon(
+                                        PhosphorIcons.star,
+                                        size: 18,
+                                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: const Icon(
+                                        PhosphorIcons.star,
+                                        size: 18,
+                                        color: Color.fromRGBO(0, 0, 0, 0.50),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                right: 15.0,
+                                left: 15,
+                              ),
+                              child: Container(
+                                width: 1,
+                                height: 30,
+                                color: const Color.fromRGBO(0, 0, 0, 0.50),
                               ),
                             ),
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                PhosphorIcons.star,
-                                size: 18,
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                PhosphorIcons.star,
-                                size: 18,
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                PhosphorIcons.star,
-                                size: 18,
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Icon(
-                                PhosphorIcons.star,
-                                size: 18,
-                                color: Color.fromRGBO(0, 0, 0, 0.50),
-                              ),
+                            const Column(
+                              children: [
+                                Text(
+                                  'Нийт уншигч',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  '0',
+                                  style: TextStyle(
+                                      fontFamily: 'InterTight',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16,
+                                      color: Color.fromRGBO(0, 0, 0, 0.50)),
+                                )
+                              ],
                             ),
                           ],
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        right: 15.0,
-                        left: 15,
-                      ),
-                      child: Container(
-                        width: 1,
-                        height: 30,
-                        color: Color.fromRGBO(0, 0, 0, 0.50),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'Нийт уншигч',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontFamily: 'InterTight',
-                            color: Colors.black,
-                          ),
                         ),
-                        Text(
-                          '0',
-                          style: TextStyle(
-                              fontFamily: 'InterTight',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color.fromRGBO(0, 0, 0, 0.50)),
-                        )
+                        const SizedBox(height: 28),
+                        Container(
+                          child: const Text(
+                              'Lorem ipsum dolor sit amet consectetur. In sed libero aliquam lectus enim elementum. Dolor a tincidunt arcu arcu vestibulum sed sem sodales. Tempus et libero eu curabitur tincidunt mattis curabitur at. Cras lacus nec ac ornare sed nunc.'),
+                        ),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                            onPressed: () {
+                              Get.toNamed('/readinghome');
+                              // Get.toNamed('/voice');
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 280,
+                              height: 50,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    PhosphorIcons.play,
+                                    size: 18,
+                                    color: Colors.white,
+                                  ),
+                                  Padding(padding: EdgeInsets.only(left: 10)),
+                                  Text(
+                                    textAlign: TextAlign.center,
+                                    'Эхлүүлэх',
+                                    style: TextStyle(
+                                      fontFamily: 'InterTight',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-                SizedBox(height: 28),
-                Container(
-                  child: Text(
-                      'Lorem ipsum dolor sit amet consectetur. In sed libero aliquam lectus enim elementum. Dolor a tincidunt arcu arcu vestibulum sed sem sodales. Tempus et libero eu curabitur tincidunt mattis curabitur at. Cras lacus nec ac ornare sed nunc.'),
-                ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(0, 124, 214, 0.50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5))),
-                    onPressed: () {
-                      Get.toNamed('/readinghome');
-                      // Get.toNamed('/voice');
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 280,
-                      height: 50,
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(2)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            PhosphorIcons.play,
-                            size: 18,
-                            color: Colors.white,
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            textAlign: TextAlign.center,
-                            'Эхлүүлэх',
-                            style: TextStyle(
-                              fontFamily: 'InterTight',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-              ],
-            ),
-          ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
