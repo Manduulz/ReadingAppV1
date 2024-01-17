@@ -13,13 +13,22 @@ class StatisticScreen extends StatefulWidget {
 
 class _StatisticScreenState extends State<StatisticScreen> {
   List<double> weeklySummary = [
+    123,
+    70,
+    142,
+    36,
+    11,
+    97,
+    80,
+  ];
+  List<double> daySummary = [
+    75,
     0,
     0,
     0,
+    88,
     0,
-    0,
-    0,
-    0,
+    100,
   ];
   @override
   Widget build(BuildContext context) {
@@ -296,11 +305,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     width: 350,
                     child: Container(
                         color: Color(0xffE8EFF5),
-                        child: MyBarGraph(weeklySummary: weeklySummary)),
+                        child: MyBarGraph(
+                          weeklySummary: weeklySummary,
+                          daySummary: daySummary,
+                        )),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 25, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
                   child: Text(
                     'Сүүлийн 4 долоо хоног',
                     style: TextStyle(
@@ -424,7 +436,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     width: 350,
                     child: Container(
                         color: Color(0xffE8EFF5),
-                        child: MyBarGraph(weeklySummary: weeklySummary)),
+                        child: MyBarGraph(
+                          weeklySummary: weeklySummary,
+                          daySummary: daySummary,
+                        )),
                   ),
                 ),
                 Center(

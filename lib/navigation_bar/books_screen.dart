@@ -10,6 +10,21 @@ class BooksScreen extends StatefulWidget {
 }
 
 class _BooksScreenState extends State<BooksScreen> {
+  int _page = 0;
+  late PageController bookPageController;
+
+  @override
+  void initState() {
+    super.initState();
+    bookPageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    bookPageController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +80,72 @@ class _BooksScreenState extends State<BooksScreen> {
                   ),
                 ),
               ),
-              //TODO: Category sub,
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0, right: 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: 39,
+                        height: 35,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        child: Text(
+                          'Бүгд',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'InterTight',
+                              color: _page == 0 ? Colors.blue : Colors.grey),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: 99,
+                        height: 35,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        child: Text(
+                          'Хадгалсан ном',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'InterTight',
+                              color: _page == 1 ? Colors.blue : Colors.grey),
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: 39,
+                        height: 35,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        child: Text(
+                          'Архив',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: 'InterTight',
+                              color: _page == 2 ? Colors.blue : Colors.grey),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Padding(padding: EdgeInsets.only(top: 20)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

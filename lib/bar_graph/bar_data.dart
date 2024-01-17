@@ -20,7 +20,7 @@ class BarData {
   });
   List<InvidualBar> barData = [];
 
-  void initializeBarData() {
+  void initializeWeekBarData() {
     barData = [
       InvidualBar(x: 1, y: monAmount),
       InvidualBar(x: 2, y: tueAmount),

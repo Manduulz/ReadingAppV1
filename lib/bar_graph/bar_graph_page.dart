@@ -18,6 +18,15 @@ class _BarGraphBoxState extends State<BarGraphBox> {
     46,
     68,
   ];
+  List<double> daySummary = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +35,10 @@ class _BarGraphBoxState extends State<BarGraphBox> {
         child: SizedBox(
           width: 350,
           height: 200,
-          child: MyBarGraph(weeklySummary: weeklySummary),
+          child: MyBarGraph(
+            weeklySummary: weeklySummary,
+            daySummary: daySummary,
+          ),
         ),
       ),
     );

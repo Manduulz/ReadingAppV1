@@ -4,8 +4,12 @@ import 'package:readingappv1/bar_graph/bar_data.dart';
 
 class MyBarGraph extends StatefulWidget {
   final List weeklySummary;
-  MyBarGraph({super.key, required this.weeklySummary});
-
+  final List daySummary;
+  const MyBarGraph({
+    super.key,
+    required this.weeklySummary,
+    required this.daySummary,
+  });
   @override
   State<MyBarGraph> createState() => _MyBarGraphState();
 }
@@ -13,7 +17,7 @@ class MyBarGraph extends StatefulWidget {
 class _MyBarGraphState extends State<MyBarGraph> {
   @override
   Widget build(BuildContext context) {
-    BarData myBarData = BarData(
+    BarData weeklyBarData = BarData(
       monAmount: widget.weeklySummary[0],
       tueAmount: widget.weeklySummary[1],
       wedAmount: widget.weeklySummary[2],
@@ -22,7 +26,17 @@ class _MyBarGraphState extends State<MyBarGraph> {
       satAmount: widget.weeklySummary[5],
       sunAmount: widget.weeklySummary[6],
     );
-    myBarData.initializeBarData();
+    weeklyBarData.initializeWeekBarData();
+    // DayBarData dayBarData = DayBarData(
+    //   moAmount: widget.daySummary[0],
+    //   tuAmount: widget.daySummary[1],
+    //   weAmount: widget.daySummary[2],
+    //   thAmount: widget.daySummary[3],
+    //   frAmount: widget.daySummary[4],
+    //   saAmount: widget.daySummary[5],
+    //   suAmount: widget.daySummary[6],
+    // );
+    // dayBarData.initializeDayBarData();
     return BarChart(
       BarChartData(
         maxY: 150,
@@ -35,18 +49,13 @@ class _MyBarGraphState extends State<MyBarGraph> {
           showTitles: true,
           getTitlesWidget: getBottomTitles,
         ))),
-        barGroups: myBarData.barData
+        groupsSpace: 10,
+        barGroups: weeklyBarData.barData
             .map(
               (data) => BarChartGroupData(x: data.x, barRods: [
                 BarChartRodData(
                     toY: data.y,
                     color: Colors.blue,
-                    width: 10,
-                    backDrawRodData: BackgroundBarChartRodData(
-                        show: true, toY: 150, color: Colors.grey)),
-                BarChartRodData(
-                    toY: data.y,
-                    color: Color(0xffFF9501),
                     width: 10,
                     backDrawRodData: BackgroundBarChartRodData(
                         show: true, toY: 150, color: Colors.grey)),
