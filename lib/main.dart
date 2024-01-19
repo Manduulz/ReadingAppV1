@@ -17,10 +17,12 @@ import 'package:readingappv1/profile_settings/information_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
 import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
+import 'package:readingappv1/service/my_storage.dart';
 import 'package:readingappv1/sign_up_screen.dart';
 
 void main() {
   ApiHelper.instance.init(baseUrl: Constants.baseUrl);
+  MyStorage.instance.init();
 
   runApp(
     GetMaterialApp(

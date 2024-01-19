@@ -7,7 +7,7 @@ import 'package:readingappv1/persistance/account_persistance.dart';
 class LoginRepository {
   final apiProvider = ApiProvider();
 
-  final _accountPersistance = AccountPersistance() 
+  final _accountPersistance = AccountPersistance();
 
   Future<BaseResponse<LoginResponse>> authenticate({required String username, required String password}) async {
     try {

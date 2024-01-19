@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:readingappv1/API/API.dart';
+import 'package:readingappv1/service/api_helper.dart';
+import 'package:readingappv1/service/method.dart';
+import 'package:readingappv1/service/my_storage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -107,8 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                                 onPressed: () {
-                                  // login();
-                                  Get.toNamed('/loading');
+                                  login();
+                                  // Get.toNamed('/loading');
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
@@ -155,28 +157,34 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> login() async {
     isLoading.value = true;
 
-    dynamic response = await LoginRepository().authenticate(
-      username: 'Oyu@test.com',
-      password: 'Ireedui123',
+    dynamic response = await ApiHelper.instance.sendHttpRequest(
+      urlPath: '/connect/token',
+      contentType: 'application/x-www-form-urlencoded',
+      method: Method.post,
+      body: {
+        "grant_type": "password",
+        "client_id": "user",
+        "username": 'setgelll1212@gmail.com',
+        "password": '123456',
+        "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
+      },
+      queryParameters: {
+        // "grant_type": "password",
+        // // "UserName": 'setgelll1212@gmail.com',
+        // // "Password": '123456',
+        // "client_id": "user",
+        // "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
+        "scope": "offline_access"
+      },
     );
-    // dynamic response = await ApiHelper.instance.sendHttpRequest(
-    //   urlPath: '/api/connect/token',
-    //   contentType: 'text/plain',
-    //   method: Method.post,
-    //   body: {
-    //     "grant_type": "password",
-    //     "UserName": 'setgelll1212@gmail.com',
-    //     "Password": '123456',
-    //     "client_id": "user",
-    //     "admin"
-    //         "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
-    //     "37f8002c-2206-4182-8278-c2af7b5aa108"
-    //         "scope": "offline_access"
-    //   },
-    // );
+
     isLoading.value = false;
 
+    await MyStorage.instance.saveData('token', 'Bearer ${response['access_token']}');
+
     log('response : $response');
+
+    String token = await MyStorage.instance.getData('token');
 
     // log('isSuccess : $isSuccess , response : $response');
 
