@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/classes/search_field.dart';
+import 'package:readingappv1/empty_widget.dart';
 import 'package:readingappv1/navigation_bar/book_item.dart';
 import 'package:readingappv1/service/api_helper.dart';
 
@@ -21,6 +20,28 @@ class _BooksScreenState extends State<BooksScreen> {
   RxList<dynamic> books = RxList([]);
   RxBool isLoading = true.obs;
 
+  Future<void> getBooksList() async {
+    dynamic body = {
+      // 'search': 'string',
+      'pagination': {
+        'current': 1,
+        'pageSize': 10,
+      },
+      'contentType': 'All',
+    };
+
+    var (isSuccess, response) = await ApiHelper.instance.sendHttpRequest(
+      urlPath: '/api/content/list/paginated',
+      method: Method.post,
+      body: body,
+    );
+    isLoading.value = false;
+
+    if (isSuccess) {
+      books.value = response['data'];
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -31,18 +52,6 @@ class _BooksScreenState extends State<BooksScreen> {
   void dispose() {
     super.dispose();
     bookPageController.dispose();
-  }
-
-  Future<void> getBooksList() async {
-    dynamic response = await ApiHelper.instance.sendHttpRequest(
-      urlPath: '/api/content/active',
-      method: Method.get,
-      headers: {'Authorization': 'Bearer B2ZOstS_47qjvE6LD4zHFRF1cnkbK4nILpttt9f-HJY'},
-    );
-
-    books.value = response;
-
-    log('setgel : $response');
   }
 
   @override
@@ -159,15 +168,18 @@ class _BooksScreenState extends State<BooksScreen> {
               ),
               const SizedBox(height: 20),
               Obx(() {
-                return SizedBox(
-                  height: 400,
-                  child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                      itemCount: books.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return BookItem(detail: books[index]);
-                      }),
-                );
+                if (isLoading.value) return const Center(child: CircularProgressIndicator());
+                return books.isEmpty
+                    ? const EmptyWidget()
+                    : SizedBox(
+                        height: 600,
+                        child: GridView.builder(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                            itemCount: books.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return BookItem(detail: books[index]);
+                            }),
+                      );
               })
             ],
           ),

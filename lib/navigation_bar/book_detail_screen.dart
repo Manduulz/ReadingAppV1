@@ -19,20 +19,22 @@ class BookDetailScreen extends StatelessWidget {
   Future<void> getBookDetail() async {
     isLoading.value = true;
 
-    dynamic response = await ApiHelper.instance.sendHttpRequest(
+    var (isSuccess, response) = await ApiHelper.instance.sendHttpRequest(
       urlPath: '/api/content/$bookId',
       method: Method.get,
-      headers: {'Authorization': 'Bearer B2ZOstS_47qjvE6LD4zHFRF1cnkbK4nILpttt9f-HJY'},
     );
-
     isLoading.value = false;
 
-    log('wtf : $response');
-    bookDetail.value = response;
+    log('book detail response : $response');
+
+    if (isSuccess) {
+      bookDetail.value = response;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    /// TODO : remove it from build
     getBookDetail();
 
     return Scaffold(
@@ -97,7 +99,7 @@ class BookDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          bookDetail['contentText'] ?? '',
+                          'progressPCT : ${bookDetail['progressPCT']} , id : ${bookDetail['id']}' ?? '',
                           style: const TextStyle(
                             fontFamily: 'InterTight',
                             fontStyle: FontStyle.normal,
@@ -205,10 +207,7 @@ class BookDetailScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 28),
-                        Container(
-                          child: const Text(
-                              'Lorem ipsum dolor sit amet consectetur. In sed libero aliquam lectus enim elementum. Dolor a tincidunt arcu arcu vestibulum sed sem sodales. Tempus et libero eu curabitur tincidunt mattis curabitur at. Cras lacus nec ac ornare sed nunc.'),
-                        ),
+                        Text('${bookDetail['contentText']}' ?? ''),
                         const SizedBox(height: 10),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(

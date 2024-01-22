@@ -13,12 +13,13 @@ import 'package:readingappv1/navigation_bar/profile_screen.dart';
 import 'package:readingappv1/navigation_bar/screen_layout.dart';
 import 'package:readingappv1/navigation_bar/statistic_screen.dart';
 import 'package:readingappv1/profile_settings/change_account_screen.dart';
-import 'package:readingappv1/profile_settings/information_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
 import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
 import 'package:readingappv1/service/my_storage.dart';
 import 'package:readingappv1/sign_up_screen.dart';
+
+import 'profile_settings/information_screen.dart';
 
 void main() {
   ApiHelper.instance.init(baseUrl: Constants.baseUrl);
@@ -36,7 +37,7 @@ void main() {
         GetPage(name: '/navhome', page: () => const navHomeScreen()),
         GetPage(name: '/statistic', page: () => const StatisticScreen()),
         GetPage(name: '/profile', page: () => const ProfileScreen()),
-        GetPage(name: '/information', page: () => const InformationScreen()),
+        GetPage(name: '/information', page: () => const InformationScreen(data: {})),
         GetPage(name: '/privacy', page: () => const PrivacyScreen()),
         GetPage(name: '/changeacc', page: () => const ChangeAccounts()),
         GetPage(name: '/graph', page: () => const BarGraphBox()),

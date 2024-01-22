@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
 
+/// TODO : Make it statelessWidget
 class navHomeScreen extends StatefulWidget {
   const navHomeScreen({super.key});
 
@@ -47,15 +48,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
   }
 
   Widget build(BuildContext context) {
-    // final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0.0,
-        backgroundColor: const Color(0xffE8EFF5),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -65,121 +58,122 @@ class _navHomeScreenState extends State<navHomeScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 200,
-                  child: PageView.builder(
-                    controller: pageController,
-                    onPageChanged: (index) {
-                      pageNo = index;
-                      setState(() {});
-                    },
-                    itemBuilder: (_, index) {
-                      return AnimatedBuilder(
-                        animation: pageController,
-                        builder: (ctx, child) {
-                          return child!;
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.only(left: 5, right: 5),
-                          decoration: const BoxDecoration(
-                            gradient:
-                                LinearGradient(colors: [Color(0xff007CD6), Color(0xff272E6A)], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: SizedBox(
-                            width: 350,
-                            height: 184,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  textDirection: TextDirection.rtl,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'Lorem',
-                                        style: TextStyle(
-                                          fontSize: 21,
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          fontFamily: 'InterTight',
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'ipsum dolor',
-                                        style: TextStyle(
-                                          fontSize: 21,
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          fontFamily: 'InterTight',
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 10.0),
-                                      child: Text(
-                                        'sit amet amet.',
-                                        style: TextStyle(
-                                          fontSize: 21,
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          fontFamily: 'InterTight',
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        TextButton(
-                                            onPressed: () {},
-                                            child: const Text(
-                                              'Lorem ipsum',
-                                              style: TextStyle(
-                                                  fontFamily: 'InterTight',
-                                                  fontStyle: FontStyle.normal,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 14,
-                                                  color: Colors.white),
-                                            )),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              PhosphorIcons.arrow_right,
-                                              color: Colors.white,
-                                            ))
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 10.0),
-                                  child: Image(
-                                    image: AssetImage('assets/images/book.png'),
-                                    width: 150,
-                                    height: 150,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    itemCount: numPages,
-                  ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
+                /// Banners
+                // SizedBox(
+                //   height: 200,
+                //   child: PageView.builder(
+                //     controller: pageController,
+                //     onPageChanged: (index) {
+                //       pageNo = index;
+                //       setState(() {});
+                //     },
+                //     itemBuilder: (_, index) {
+                //       return AnimatedBuilder(
+                //         animation: pageController,
+                //         builder: (ctx, child) {
+                //           return child!;
+                //         },
+                //         child: Container(
+                //           margin: const EdgeInsets.only(left: 5, right: 5),
+                //           decoration: const BoxDecoration(
+                //             gradient:
+                //                 LinearGradient(colors: [Color(0xff007CD6), Color(0xff272E6A)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                //             borderRadius: BorderRadius.all(Radius.circular(10)),
+                //           ),
+                //           child: SizedBox(
+                //             width: 350,
+                //             height: 184,
+                //             child: Row(
+                //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //               children: [
+                //                 Column(
+                //                   mainAxisAlignment: MainAxisAlignment.center,
+                //                   mainAxisSize: MainAxisSize.min,
+                //                   textDirection: TextDirection.rtl,
+                //                   crossAxisAlignment: CrossAxisAlignment.end,
+                //                   children: [
+                //                     const Padding(
+                //                       padding: EdgeInsets.only(left: 10.0),
+                //                       child: Text(
+                //                         'Lorem',
+                //                         style: TextStyle(
+                //                           fontSize: 21,
+                //                           fontWeight: FontWeight.w700,
+                //                           fontStyle: FontStyle.normal,
+                //                           fontFamily: 'InterTight',
+                //                           color: Colors.white,
+                //                         ),
+                //                       ),
+                //                     ),
+                //                     const Padding(
+                //                       padding: EdgeInsets.only(left: 10.0),
+                //                       child: Text(
+                //                         'ipsum dolor',
+                //                         style: TextStyle(
+                //                           fontSize: 21,
+                //                           fontWeight: FontWeight.w700,
+                //                           fontStyle: FontStyle.normal,
+                //                           fontFamily: 'InterTight',
+                //                           color: Colors.white,
+                //                         ),
+                //                       ),
+                //                     ),
+                //                     const Padding(
+                //                       padding: EdgeInsets.only(left: 10.0),
+                //                       child: Text(
+                //                         'sit amet amet.',
+                //                         style: TextStyle(
+                //                           fontSize: 21,
+                //                           fontWeight: FontWeight.w700,
+                //                           fontStyle: FontStyle.normal,
+                //                           fontFamily: 'InterTight',
+                //                           color: Colors.white,
+                //                         ),
+                //                       ),
+                //                     ),
+                //                     Row(
+                //                       children: [
+                //                         TextButton(
+                //                             onPressed: () {},
+                //                             child: const Text(
+                //                               'Lorem ipsum',
+                //                               style: TextStyle(
+                //                                   fontFamily: 'InterTight',
+                //                                   fontStyle: FontStyle.normal,
+                //                                   fontWeight: FontWeight.w400,
+                //                                   fontSize: 14,
+                //                                   color: Colors.white),
+                //                             )),
+                //                         IconButton(
+                //                             onPressed: () {},
+                //                             icon: const Icon(
+                //                               PhosphorIcons.arrow_right,
+                //                               color: Colors.white,
+                //                             ))
+                //                       ],
+                //                     ),
+                //                   ],
+                //                 ),
+                //                 const Padding(
+                //                   padding: EdgeInsets.only(right: 10.0),
+                //                   child: Image(
+                //                     image: AssetImage('assets/images/book.png'),
+                //                     width: 150,
+                //                     height: 150,
+                //                   ),
+                //                 )
+                //               ],
+                //             ),
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //     itemCount: numPages,
+                //   ),
+                // ),
+                const SizedBox(height: 12),
+
+                /// Dots
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(

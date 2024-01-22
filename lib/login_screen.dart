@@ -108,10 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-                                onPressed: () {
-                                  login();
-                                  // Get.toNamed('/loading');
-                                },
+                                onPressed: () => login(),
                                 child: Container(
                                   alignment: Alignment.center,
                                   width: 280,
@@ -157,37 +154,31 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> login() async {
     isLoading.value = true;
 
-    dynamic response = await ApiHelper.instance.sendHttpRequest(
+    /// TODO : insert textController's text
+    var (isSuccess, response) = await ApiHelper.instance.sendHttpRequest(
       urlPath: '/connect/token',
       contentType: 'application/x-www-form-urlencoded',
       method: Method.post,
       body: {
         "grant_type": "password",
-        "client_id": "user",
-        "username": 'setgelll1212@gmail.com',
+        "username": 'zorigmanduul@yahoo.com',
         "password": '123456',
         "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
+        "client_id": "user",
       },
-      queryParameters: {
-        // "grant_type": "password",
-        // // "UserName": 'setgelll1212@gmail.com',
-        // // "Password": '123456',
-        // "client_id": "user",
-        // "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
-        "scope": "offline_access"
-      },
+      queryParameters: {"scope": "offline_access"},
     );
 
     isLoading.value = false;
 
-    await MyStorage.instance.saveData('token', 'Bearer ${response['access_token']}');
+    if (isSuccess) {
+      await MyStorage.instance.saveData('token', 'Bearer ${response['access_token']}');
 
-    log('response : $response');
+      Get.toNamed('/loading');
+    } else {
+      log('login error occured');
 
-    String token = await MyStorage.instance.getData('token');
-
-    // log('isSuccess : $isSuccess , response : $response');
-
-    /// TODO : what to do after login
+      /// TODO : Show some error alert
+    }
   }
 }

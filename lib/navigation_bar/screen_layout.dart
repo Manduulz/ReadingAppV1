@@ -125,7 +125,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: 65,
+        height: 100,
         child: CupertinoTabBar(
           backgroundColor: Color(0xffE8EFF5),
           onTap: navigationTapped,

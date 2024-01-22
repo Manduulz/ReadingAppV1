@@ -93,7 +93,7 @@ class ApiHelper {
     return response;
   }
 
-  Future<dynamic> sendHttpRequest({
+  Future<(bool, dynamic)> sendHttpRequest({
     required String urlPath,
     Method method = Method.get,
     Map<String, dynamic>? queryParameters,
@@ -104,14 +104,14 @@ class ApiHelper {
     // ignore: deprecated_member_use_from_same_package
     Response? response =
         await sendRequest(urlPath: urlPath, method: method, queryParameters: queryParameters, body: body, headers: headers, contentType: contentType);
-    // int httpStatus = response?.statusCode ?? 0;
-    // bool isHttpStatusOk = response != null && (httpStatus >= 200 && httpStatus < 300);
-    // int serviceStatus = int.tryParse('${response?.data['statusCode']}') ?? 200;
-    // bool isServiceStatusOk = serviceStatus >= 200 && serviceStatus < 300;
-    // bool isSuccess = isHttpStatusOk && isServiceStatusOk;
+    int httpStatus = response?.statusCode ?? 0;
+    bool isHttpStatusOk = response != null && (httpStatus >= 200 && httpStatus < 300);
+    int serviceStatus = int.tryParse('${response?.data['statusCode']}') ?? 200;
+    bool isServiceStatusOk = serviceStatus >= 200 && serviceStatus < 300;
+    bool isSuccess = isHttpStatusOk && isServiceStatusOk;
 
-    return response?.data;
-    // return (isSuccess, response?.data);
+    // return response?.data;
+    return (isSuccess, response?.data);
   }
 
   ///Format url to remove '/' at the end of url and encode url for special characters
