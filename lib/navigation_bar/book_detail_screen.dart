@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/classes/book_center_right_action.dart';
+import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
 
 import '../service/method.dart';
@@ -214,7 +215,7 @@ class BookDetailScreen extends StatelessWidget {
                                 backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                             onPressed: () {
-                              Get.toNamed('/readinghome');
+                              Get.to(() => ReadingScreen(data: bookDetail));
                               // Get.toNamed('/voice');
                             },
                             child: Container(

@@ -14,7 +14,6 @@ import 'package:readingappv1/navigation_bar/screen_layout.dart';
 import 'package:readingappv1/navigation_bar/statistic_screen.dart';
 import 'package:readingappv1/profile_settings/change_account_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
-import 'package:readingappv1/reading_screens/reading_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
 import 'package:readingappv1/service/my_storage.dart';
 import 'package:readingappv1/sign_up_screen.dart';
@@ -41,7 +40,7 @@ void main() {
         GetPage(name: '/privacy', page: () => const PrivacyScreen()),
         GetPage(name: '/changeacc', page: () => const ChangeAccounts()),
         GetPage(name: '/graph', page: () => const BarGraphBox()),
-        GetPage(name: '/readinghome', page: () => const ReadingScreen()),
+        // GetPage(name: '/readinghome', page: () => const ReadingScreen()),
         GetPage(name: '/books', page: () => const BooksScreen()),
         GetPage(name: '/idiom', page: () => const IdiomScreen()),
         // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
