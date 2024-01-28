@@ -44,11 +44,19 @@ class _MyBarGraphState extends State<MyBarGraph> {
         gridData: FlGridData(show: false),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
+            leftTitles: AxisTitles(
+                sideTitles: SideTitles(
+              showTitles: false,
+            )),
+            topTitles: AxisTitles(
+                sideTitles: SideTitles(
+              showTitles: false,
+            )),
             bottomTitles: AxisTitles(
                 sideTitles: SideTitles(
-          showTitles: true,
-          getTitlesWidget: getBottomTitles,
-        ))),
+              showTitles: true,
+              getTitlesWidget: getBottomTitles,
+            ))),
         groupsSpace: 10,
         barGroups: weeklyBarData.barData
             .map(
@@ -71,7 +79,7 @@ Widget getBottomTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Colors.grey,
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 10,
   );
   Widget text;
   switch (value.toInt()) {

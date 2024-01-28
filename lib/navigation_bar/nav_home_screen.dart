@@ -59,118 +59,38 @@ class _navHomeScreenState extends State<navHomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 /// Banners
-                // SizedBox(
-                //   height: 200,
-                //   child: PageView.builder(
-                //     controller: pageController,
-                //     onPageChanged: (index) {
-                //       pageNo = index;
-                //       setState(() {});
-                //     },
-                //     itemBuilder: (_, index) {
-                //       return AnimatedBuilder(
-                //         animation: pageController,
-                //         builder: (ctx, child) {
-                //           return child!;
-                //         },
-                //         child: Container(
-                //           margin: const EdgeInsets.only(left: 5, right: 5),
-                //           decoration: const BoxDecoration(
-                //             gradient:
-                //                 LinearGradient(colors: [Color(0xff007CD6), Color(0xff272E6A)], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                //             borderRadius: BorderRadius.all(Radius.circular(10)),
-                //           ),
-                //           child: SizedBox(
-                //             width: 350,
-                //             height: 184,
-                //             child: Row(
-                //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //               children: [
-                //                 Column(
-                //                   mainAxisAlignment: MainAxisAlignment.center,
-                //                   mainAxisSize: MainAxisSize.min,
-                //                   textDirection: TextDirection.rtl,
-                //                   crossAxisAlignment: CrossAxisAlignment.end,
-                //                   children: [
-                //                     const Padding(
-                //                       padding: EdgeInsets.only(left: 10.0),
-                //                       child: Text(
-                //                         'Lorem',
-                //                         style: TextStyle(
-                //                           fontSize: 21,
-                //                           fontWeight: FontWeight.w700,
-                //                           fontStyle: FontStyle.normal,
-                //                           fontFamily: 'InterTight',
-                //                           color: Colors.white,
-                //                         ),
-                //                       ),
-                //                     ),
-                //                     const Padding(
-                //                       padding: EdgeInsets.only(left: 10.0),
-                //                       child: Text(
-                //                         'ipsum dolor',
-                //                         style: TextStyle(
-                //                           fontSize: 21,
-                //                           fontWeight: FontWeight.w700,
-                //                           fontStyle: FontStyle.normal,
-                //                           fontFamily: 'InterTight',
-                //                           color: Colors.white,
-                //                         ),
-                //                       ),
-                //                     ),
-                //                     const Padding(
-                //                       padding: EdgeInsets.only(left: 10.0),
-                //                       child: Text(
-                //                         'sit amet amet.',
-                //                         style: TextStyle(
-                //                           fontSize: 21,
-                //                           fontWeight: FontWeight.w700,
-                //                           fontStyle: FontStyle.normal,
-                //                           fontFamily: 'InterTight',
-                //                           color: Colors.white,
-                //                         ),
-                //                       ),
-                //                     ),
-                //                     Row(
-                //                       children: [
-                //                         TextButton(
-                //                             onPressed: () {},
-                //                             child: const Text(
-                //                               'Lorem ipsum',
-                //                               style: TextStyle(
-                //                                   fontFamily: 'InterTight',
-                //                                   fontStyle: FontStyle.normal,
-                //                                   fontWeight: FontWeight.w400,
-                //                                   fontSize: 14,
-                //                                   color: Colors.white),
-                //                             )),
-                //                         IconButton(
-                //                             onPressed: () {},
-                //                             icon: const Icon(
-                //                               PhosphorIcons.arrow_right,
-                //                               color: Colors.white,
-                //                             ))
-                //                       ],
-                //                     ),
-                //                   ],
-                //                 ),
-                //                 const Padding(
-                //                   padding: EdgeInsets.only(right: 10.0),
-                //                   child: Image(
-                //                     image: AssetImage('assets/images/book.png'),
-                //                     width: 150,
-                //                     height: 150,
-                //                   ),
-                //                 )
-                //               ],
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //     itemCount: numPages,
-                //   ),
-                // ),
+                SizedBox(
+                  height: 200,
+                  child: PageView.builder(
+                    controller: pageController,
+                    onPageChanged: (index) {
+                      pageNo = index;
+                      setState(() {});
+                    },
+                    itemBuilder: (_, index) {
+                      return AnimatedBuilder(
+                        animation: pageController,
+                        builder: (ctx, child) {
+                          return child!;
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(left: 5, right: 5),
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xff007CD6), Color(0xff272E6A)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: SizedBox(
+                            height: 180,
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: numPages,
+                  ),
+                ),
                 const SizedBox(height: 12),
 
                 /// Dots
@@ -179,15 +99,18 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     children: List.generate(
                       5,
                       (index) => Container(
-                        margin: const EdgeInsets.only(right: 8, left: 8, top: 0, bottom: 0),
+                        margin: const EdgeInsets.only(
+                            right: 8, left: 8, top: 0, bottom: 0),
                         child: Icon(
                           PhosphorIcons.circle_fill,
                           size: 14,
-                          color: pageNo == index ? Colors.indigoAccent : Colors.grey.shade300,
+                          color: pageNo == index
+                              ? Colors.indigoAccent
+                              : Colors.grey.shade300,
                         ),
                       ),
                     )),
-                const Padding(padding: EdgeInsets.only(top: 38)),
+                SizedBox(height: 38),
                 MaterialButton(
                   onPressed: () {
                     Get.toNamed('/books');
@@ -196,9 +119,13 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 15,
+                              offset: Offset(2, 4))
+                        ]),
                     child: SizedBox(
-                      width: 350,
                       height: 80,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -240,7 +167,10 @@ class _navHomeScreenState extends State<navHomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              decoration: const BoxDecoration(color: Color(0xff272E6A), borderRadius: BorderRadius.all(Radius.circular(50))),
+                              decoration: const BoxDecoration(
+                                  color: Color(0xff272E6A),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50))),
                               child: const SizedBox(
                                 width: 24,
                                 height: 24,
@@ -265,7 +195,12 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 15,
+                              offset: Offset(2, 4))
+                        ]),
                     child: SizedBox(
                       width: 350,
                       height: 80,
@@ -310,7 +245,10 @@ class _navHomeScreenState extends State<navHomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              decoration: const BoxDecoration(color: Color(0xff272E6A), borderRadius: BorderRadius.all(Radius.circular(50))),
+                              decoration: const BoxDecoration(
+                                  color: Color(0xff272E6A),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(50))),
                               child: const SizedBox(
                                 width: 24,
                                 height: 24,
@@ -327,7 +265,6 @@ class _navHomeScreenState extends State<navHomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  width: 390,
                   height: 62,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -336,24 +273,25 @@ class _navHomeScreenState extends State<navHomeScreen> {
                         padding: EdgeInsets.only(left: 20.0),
                         child: Text(
                           'Таны унших явц',
-                          style: TextStyle(fontFamily: 'InterTight', fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
+                          style: TextStyle(
+                              fontFamily: 'InterTight',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Засварлах',
-                              style: TextStyle(
-                                  fontFamily: 'InterTight',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  // color: Color(0xff007CD680)
-                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            )),
-                      )
+                      TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            'Засварлах',
+                            style: TextStyle(
+                                fontFamily: 'InterTight',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                // color: Color(0xff007CD680)
+                                color: Color.fromRGBO(0, 124, 214, 0.50)),
+                          ))
                     ],
                   ),
                 ),
@@ -366,22 +304,28 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 15,
+                              offset: Offset(2, 4))
+                        ]),
                     child: SizedBox(
-                      width: 350,
                       height: 104,
                       child: Row(
                         children: [
-                          const Padding(padding: EdgeInsets.only(left: 20)),
+                          const Padding(padding: EdgeInsets.only(left: 10)),
                           Container(
                             width: 84,
                             height: 84,
                             decoration: const BoxDecoration(
                               color: Color(0xffE8EFF5),
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
                             ),
                           ),
-                          const Padding(padding: EdgeInsets.fromLTRB(32, 0, 0, 0)),
+                          const Padding(
+                              padding: EdgeInsets.fromLTRB(32, 0, 0, 0)),
                           const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
@@ -404,7 +348,10 @@ class _navHomeScreenState extends State<navHomeScreen> {
                                     Text(
                                       'Үлгэрийн ном',
                                       style: TextStyle(
-                                          fontFamily: 'InterTight', fontSize: 10, fontWeight: FontWeight.w400, color: Color.fromRGBO(0, 0, 0, 0.50)),
+                                          fontFamily: 'InterTight',
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
                                     ),
                                   ],
                                 ),

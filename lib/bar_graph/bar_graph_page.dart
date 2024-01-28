@@ -31,10 +31,10 @@ class _BarGraphBoxState extends State<BarGraphBox> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: 500,
         color: Color(0xffE8EFF5),
         child: SizedBox(
-          width: 350,
-          height: 200,
+          height: 500,
           child: MyBarGraph(
             weeklySummary: weeklySummary,
             daySummary: daySummary,

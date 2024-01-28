@@ -20,7 +20,7 @@ class _PlayStopButtonState extends State<PlayStopButton> {
           //Add your play/stop logic here
         },
         icon: Icon(
-          isPlaying ? PhosphorIcons.stop : PhosphorIcons.play,
+          isPlaying ? PhosphorIcons.stop : PhosphorIcons.microphone,
           size: 28,
           color: Colors.white,
         ));

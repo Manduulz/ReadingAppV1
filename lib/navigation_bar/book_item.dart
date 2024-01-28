@@ -17,14 +17,16 @@ class BookItem extends StatelessWidget {
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(15)),
-            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))
+            ]),
         child: Column(
           children: [
             /// TODO : CachedNetworkImage
             Container(
               color: Colors.amber,
               height: 100,
-              width: 100,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0, left: 10),
@@ -33,7 +35,11 @@ class BookItem extends StatelessWidget {
                 child: Text(
                   detail['name'],
                   style: const TextStyle(
-                      fontSize: 16, fontFamily: 'InterTight', fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Colors.black),
+                      fontSize: 16,
+                      fontFamily: 'InterTight',
+                      fontWeight: FontWeight.w600,
+                      fontStyle: FontStyle.normal,
+                      color: Colors.black),
                 ),
               ),
             ),

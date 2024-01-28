@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   RxBool isLoading = false.obs;
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Obx(() {
           return Padding(
-            padding: const EdgeInsets.only(right: 45.0, left: 45),
+            padding: const EdgeInsets.only(right: 45, left: 45),
             child: isLoading.value
                 ? const Center(
                     child: CircularProgressIndicator(),
@@ -41,11 +42,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const Padding(padding: EdgeInsets.only(top: 100)),
+                            SizedBox(height: 100),
                             const Text(
                               'Нэвтрэх',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black, fontSize: 24, fontFamily: 'InterTight', fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 24,
+                                  fontFamily: 'InterTight',
+                                  fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(height: 70),
                             const Align(
@@ -56,36 +61,58 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const SizedBox(height: 6),
                             SizedBox(
-                              width: 330,
                               height: 50,
                               child: TextField(
                                 controller: _emailController,
-                                style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                style: const TextStyle(
+                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
                                 decoration: const InputDecoration(
-                                    filled: true,
-                                    fillColor: Color(0xffE2E8F0),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                                      borderSide: BorderSide(color: Colors.lightBlueAccent),
-                                    ),
-                                    hintStyle: TextStyle(color: Colors.white)),
+                                  filled: true,
+                                  fillColor: Color(0xffE2E8F0),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)),
+                                    borderSide: BorderSide(
+                                        color: Colors.lightBlueAccent),
+                                  ),
+                                  hintStyle: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
-                            const Align(alignment: Alignment.centerLeft, child: Text('Нууц үг')),
+                            const Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('Нууц үг')),
                             const SizedBox(height: 6),
                             SizedBox(
-                              width: 330,
                               height: 50,
                               child: TextField(
-                                obscureText: true,
+                                obscureText: _obscureText,
                                 controller: _passwordController,
-                                style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                decoration: const InputDecoration(
+                                style: const TextStyle(
+                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                decoration: InputDecoration(
                                     filled: true,
                                     fillColor: Color(0xffE2E8F0),
                                     enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(15)), borderSide: BorderSide(color: Colors.lightBlueAccent)),
-                                    hintStyle: TextStyle(color: Colors.white)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15)),
+                                        borderSide: BorderSide(
+                                            color: Colors.lightBlueAccent)),
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _obscureText
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        size: 20,
+                                        color: Colors.lightBlueAccent,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                    )),
                               ),
                             ),
                             const SizedBox(height: 40),
@@ -106,14 +133,17 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 25),
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                                    backgroundColor:
+                                        const Color.fromRGBO(0, 124, 214, 0.50),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(5))),
                                 onPressed: () => login(),
                                 child: Container(
                                   alignment: Alignment.center,
-                                  width: 280,
                                   height: 50,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2)),
                                   child: const Text(
                                     textAlign: TextAlign.center,
                                     'Нэвтрэх',
@@ -161,8 +191,8 @@ class _LoginScreenState extends State<LoginScreen> {
       method: Method.post,
       body: {
         "grant_type": "password",
-        "username": 'zorigmanduul@yahoo.com',
-        "password": '123456',
+        "username": _emailController.text,
+        "password": _passwordController.text,
         "client_secret": "291bf515-3684-4c37-bd1a-59325e76810b",
         "client_id": "user",
       },
@@ -172,7 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
     isLoading.value = false;
 
     if (isSuccess) {
-      await MyStorage.instance.saveData('token', 'Bearer ${response['access_token']}');
+      await MyStorage.instance
+          .saveData('token', 'Bearer ${response['access_token']}');
 
       Get.toNamed('/loading');
     } else {

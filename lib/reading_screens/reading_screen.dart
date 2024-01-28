@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:readingappv1/classes/play_stop.dart';
+import 'package:readingappv1/reading_screens/reading_screen_settings.dart';
 
 class ReadingScreen extends StatefulWidget {
   final dynamic data;
-  const ReadingScreen({required this.data, super.key});
+  ReadingScreen({super.key, required this.data});
 
   @override
   State<ReadingScreen> createState() => _ReadingScreenState();
@@ -20,12 +21,12 @@ class _ReadingScreenState extends State<ReadingScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: const Color(0xffE8EFF5),
+        backgroundColor: Color(0xffE8EFF5),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(
+          icon: Icon(
             PhosphorIcons.arrow_left,
             color: Color(0xff34333080),
             size: 35,
@@ -33,8 +34,10 @@ class _ReadingScreenState extends State<ReadingScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
+              onPressed: () {
+                readingShowBottomSheet(context);
+              },
+              icon: Icon(
                 PhosphorIcons.gear,
                 color: Color(0xff34333080),
                 size: 35,
@@ -44,24 +47,28 @@ class _ReadingScreenState extends State<ReadingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const Padding(padding: EdgeInsets.only(top: 15)),
-            const Align(
+            Padding(padding: EdgeInsets.only(top: 15)),
+            Align(
               alignment: Alignment.topCenter,
               child: Text(
                 'Үйл явц',
-                style:
-                    TextStyle(fontStyle: FontStyle.normal, fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'InterTight', color: Colors.black),
+                style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'InterTight',
+                    color: Colors.black),
               ),
             ),
             Container(
               height: 5,
               width: MediaQuery.of(context).size.width * 0.8,
-              color: Colors.blue,
-              margin: const EdgeInsets.symmetric(vertical: 10),
+              color: Colors.grey,
+              margin: EdgeInsets.symmetric(vertical: 10),
             ),
-            const Center(
+            Center(
               child: Text(
-                '175 / 350',
+                '0 / 300',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
@@ -71,18 +78,27 @@ class _ReadingScreenState extends State<ReadingScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 390,
-              height: 367,
-              child: Center(
-                child: Text(
-                  widget.data['contentText'],
-                  style: const TextStyle(
-                    fontFamily: 'InterTight',
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24,
-                    color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                height: 300,
+                child: Card(
+                  elevation: 20,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      child: Center(
+                          child: Text(
+                        widget.data['contentText'],
+                        style: TextStyle(
+                          fontFamily: 'InterTight',
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24,
+                          color: Colors.black,
+                        ),
+                      )),
+                    ),
                   ),
                 ),
               ),
@@ -90,7 +106,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
             Center(
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     'Хурд (Үг/Мин)',
                     style: TextStyle(
                       fontSize: 14,
@@ -99,8 +115,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       color: Colors.black,
                     ),
                   ),
-                  const Text(
-                    '100',
+                  Text(
+                    '0',
                     style: TextStyle(
                       fontSize: 14,
                       fontStyle: FontStyle.normal,
@@ -109,12 +125,13 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                   Container(
-                    width: 300,
-                    padding: const EdgeInsets.all(16),
+                    padding: EdgeInsets.all(16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Slider(
+                            min: 0,
+                            max: 100,
                             value: 0,
                             onChanged: (double value) {
                               setState(() {});
@@ -123,10 +140,10 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                   Container(
-                    width: 68,
-                    height: 68,
-                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(55)),
-                    child: const PlayStopButton(),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(55)),
+                    child: PlayStopButton(),
                   )
                 ],
               ),

@@ -77,7 +77,12 @@ class BookDetailScreen extends StatelessWidget {
                             borderRadius: BorderRadius.all(
                               Radius.circular(15),
                             ),
-                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 15,
+                                  offset: Offset(2, 4))
+                            ],
                           ),
                           alignment: Alignment.center,
                           child: const SizedBox(
@@ -100,7 +105,8 @@ class BookDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'progressPCT : ${bookDetail['progressPCT']} , id : ${bookDetail['id']}' ?? '',
+                          'progressPCT : ${bookDetail['progressPCT']} , id : ${bookDetail['id']}' ??
+                              '',
                           style: const TextStyle(
                             fontFamily: 'InterTight',
                             fontStyle: FontStyle.normal,
@@ -212,8 +218,10 @@ class BookDetailScreen extends StatelessWidget {
                         const SizedBox(height: 10),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                                backgroundColor:
+                                    const Color.fromRGBO(0, 124, 214, 0.50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5))),
                             onPressed: () {
                               Get.to(() => ReadingScreen(data: bookDetail));
                               // Get.toNamed('/voice');
@@ -222,7 +230,8 @@ class BookDetailScreen extends StatelessWidget {
                               alignment: Alignment.center,
                               width: 280,
                               height: 50,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2)),
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -52,8 +52,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             ProfileAvatar(
-                              firstName: controller.userData['firstName'].substring(0, 1),
-                              lastName: controller.userData['lastName'].substring(0, 1),
+                              firstName: controller.userData['firstName']
+                                  .substring(0, 1),
+                              lastName: controller.userData['lastName']
+                                  .substring(0, 1),
                             ),
                             const Padding(padding: EdgeInsets.only(top: 10)),
                             Text(
@@ -64,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   fontFamily: 'InterTight',
                                   fontStyle: FontStyle.normal,
                                   color: Colors.black),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -193,7 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 child: const Padding(
                                   padding: EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    'Солих >',
+                                    'З.Мандуул',
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
@@ -206,7 +208,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 20.0, right: 20),
+                            padding:
+                                const EdgeInsets.only(left: 20.0, right: 20),
                             child: Container(
                               height: 1,
                               color: Colors.grey,
@@ -249,103 +252,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
     });
   }
-
-// void showAlertDialog(BuildContext context) {
-//   showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           insetPadding: EdgeInsets.all(30),
-//           shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.all(Radius.circular(30))),
-//           content: SizedBox(
-//             width: 332,
-//             height: 126,
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Padding(padding: EdgeInsets.only(top: 16)),
-//                 SizedBox(
-//                     width: 200,
-//                     height: 50,
-//                     child: Align(
-//                       alignment: Alignment.topCenter,
-//                       child: Text(
-//                         'Та гарах уу ?',
-//                         style: TextStyle(
-//                             fontSize: 25,
-//                             fontWeight: FontWeight.bold,
-//                             fontFamily: 'InterTight',
-//                             color: Colors.black),
-//                       ),
-//                     )),
-//               ],
-//             ),
-//           ),
-//           actions: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               children: [
-//                 ElevatedButton(
-//                     style: ElevatedButton.styleFrom(
-//                         backgroundColor: Colors.grey,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius:
-//                                 BorderRadius.all(Radius.circular(25)))),
-//                     onPressed: () {
-//                       Get.toNamed('/login');
-//                     },
-//                     child: Container(
-//                       width: 64,
-//                       height: 45,
-//                       decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(25)),
-//                       padding: EdgeInsets.only(top: 8),
-//                       child: Text(
-//                         'Тийм',
-//                         textAlign: TextAlign.center,
-//                         style: TextStyle(
-//                           fontSize: 15,
-//                           fontFamily: 'InterTight',
-//                           fontWeight: FontWeight.bold,
-//                           color: Colors.white,
-//                         ),
-//                       ),
-//                     )),
-//                 ElevatedButton(
-//                     style: ElevatedButton.styleFrom(
-//                         backgroundColor: Colors.blueGrey,
-//                         shape: RoundedRectangleBorder(
-//                             borderRadius:
-//                                 BorderRadius.all(Radius.circular(25)))),
-//                     onPressed: () {
-//                       Navigator.pop(context);
-//                     },
-//                     child: Container(
-//                       width: 64,
-//                       height: 45,
-//                       decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(25)),
-//                       padding: EdgeInsets.only(top: 8),
-//                       child: Text(
-//                         'Үгүй',
-//                         textAlign: TextAlign.center,
-//                         style: TextStyle(
-//                           fontSize: 15,
-//                           fontFamily: 'InterTight',
-//                           fontWeight: FontWeight.bold,
-//                           color: Colors.white,
-//                         ),
-//                       ),
-//                     )),
-//               ],
-//             ),
-//             // Padding(padding: EdgeInsets.only(right: 20)),
-//
-//             // Padding(padding: EdgeInsets.only(right: 18))
-//           ],
-//         );
-//       });
-// }
-// AlertDialog
 }

@@ -25,7 +25,7 @@ class _BooksScreenState extends State<BooksScreen> {
       // 'search': 'string',
       'pagination': {
         'current': 1,
-        'pageSize': 10,
+        'pageSize': 100,
       },
       'contentType': 'All',
     };
@@ -82,7 +82,11 @@ class _BooksScreenState extends State<BooksScreen> {
           children: [
             Text(
               'Хайлт',
-              style: TextStyle(fontFamily: 'InterTight', fontWeight: FontWeight.w400, fontSize: 26, color: Colors.black),
+              style: TextStyle(
+                  fontFamily: 'InterTight',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 26,
+                  color: Colors.black),
             ),
           ],
         ),
@@ -99,12 +103,16 @@ class _BooksScreenState extends State<BooksScreen> {
                   child: Text(
                     'Ангилал',
                     style: TextStyle(
-                        fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
+                        fontFamily: 'InterTight',
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        color: Colors.black),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30.0, right: 30),
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,10 +120,10 @@ class _BooksScreenState extends State<BooksScreen> {
                     ElevatedButton(
                       onPressed: () {},
                       child: Container(
-                        width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Бүгд',
                           style: TextStyle(
@@ -130,10 +138,10 @@ class _BooksScreenState extends State<BooksScreen> {
                     ElevatedButton(
                       onPressed: () {},
                       child: Container(
-                        width: 99,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Хадгалсан ном',
                           style: TextStyle(
@@ -148,10 +156,10 @@ class _BooksScreenState extends State<BooksScreen> {
                     ElevatedButton(
                       onPressed: () {},
                       child: Container(
-                        width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(2))),
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Архив',
                           style: TextStyle(
@@ -168,13 +176,16 @@ class _BooksScreenState extends State<BooksScreen> {
               ),
               const SizedBox(height: 20),
               Obx(() {
-                if (isLoading.value) return const Center(child: CircularProgressIndicator());
+                if (isLoading.value)
+                  return const Center(child: CircularProgressIndicator());
                 return books.isEmpty
                     ? const EmptyWidget()
                     : SizedBox(
                         height: 600,
                         child: GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
                             itemCount: books.length,
                             itemBuilder: (BuildContext context, int index) {
                               return BookItem(detail: books[index]);
