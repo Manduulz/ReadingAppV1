@@ -76,15 +76,11 @@ class _navHomeScreenState extends State<navHomeScreen> {
                         child: Container(
                           margin: const EdgeInsets.only(left: 5, right: 5),
                           decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Color(0xff007CD6), Color(0xff272E6A)],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight),
+                            gradient:
+                                LinearGradient(colors: [Color(0xff007CD6), Color(0xff272E6A)], begin: Alignment.topLeft, end: Alignment.bottomRight),
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: SizedBox(
-                            height: 180,
-                          ),
+                          child: const SizedBox(height: 180),
                         ),
                       );
                     },
@@ -99,18 +95,15 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     children: List.generate(
                       5,
                       (index) => Container(
-                        margin: const EdgeInsets.only(
-                            right: 8, left: 8, top: 0, bottom: 0),
+                        margin: const EdgeInsets.only(right: 8, left: 8, top: 0, bottom: 0),
                         child: Icon(
                           PhosphorIcons.circle_fill,
                           size: 14,
-                          color: pageNo == index
-                              ? Colors.indigoAccent
-                              : Colors.grey.shade300,
+                          color: pageNo == index ? Colors.indigoAccent : Colors.grey.shade300,
                         ),
                       ),
                     )),
-                SizedBox(height: 38),
+                const SizedBox(height: 38),
                 MaterialButton(
                   onPressed: () {
                     Get.toNamed('/books');
@@ -119,12 +112,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15,
-                              offset: Offset(2, 4))
-                        ]),
+                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
                     child: SizedBox(
                       height: 80,
                       child: Row(
@@ -167,10 +155,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              decoration: const BoxDecoration(
-                                  color: Color(0xff272E6A),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50))),
+                              decoration: const BoxDecoration(color: Color(0xff272E6A), borderRadius: BorderRadius.all(Radius.circular(50))),
                               child: const SizedBox(
                                 width: 24,
                                 height: 24,
@@ -195,12 +180,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15,
-                              offset: Offset(2, 4))
-                        ]),
+                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
                     child: SizedBox(
                       width: 350,
                       height: 80,
@@ -245,10 +225,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              decoration: const BoxDecoration(
-                                  color: Color(0xff272E6A),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(50))),
+                              decoration: const BoxDecoration(color: Color(0xff272E6A), borderRadius: BorderRadius.all(Radius.circular(50))),
                               child: const SizedBox(
                                 width: 24,
                                 height: 24,
@@ -273,11 +250,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                         padding: EdgeInsets.only(left: 20.0),
                         child: Text(
                           'Таны унших явц',
-                          style: TextStyle(
-                              fontFamily: 'InterTight',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
+                          style: TextStyle(fontFamily: 'InterTight', fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
                         ),
                       ),
                       TextButton(
@@ -304,12 +277,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(15)),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 15,
-                              offset: Offset(2, 4))
-                        ]),
+                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
                     child: SizedBox(
                       height: 104,
                       child: Row(
@@ -320,12 +288,10 @@ class _navHomeScreenState extends State<navHomeScreen> {
                             height: 84,
                             decoration: const BoxDecoration(
                               color: Color(0xffE8EFF5),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
                             ),
                           ),
-                          const Padding(
-                              padding: EdgeInsets.fromLTRB(32, 0, 0, 0)),
+                          const Padding(padding: EdgeInsets.fromLTRB(32, 0, 0, 0)),
                           const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.max,
@@ -348,10 +314,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                                     Text(
                                       'Үлгэрийн ном',
                                       style: TextStyle(
-                                          fontFamily: 'InterTight',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 0, 0, 0.50)),
+                                          fontFamily: 'InterTight', fontSize: 10, fontWeight: FontWeight.w400, color: Color.fromRGBO(0, 0, 0, 0.50)),
                                     ),
                                   ],
                                 ),

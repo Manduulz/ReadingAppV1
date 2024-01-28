@@ -12,6 +12,7 @@ import 'package:readingappv1/navigation_bar/nav_home_screen.dart';
 import 'package:readingappv1/navigation_bar/profile_screen.dart';
 import 'package:readingappv1/navigation_bar/screen_layout.dart';
 import 'package:readingappv1/navigation_bar/statistic_screen.dart';
+import 'package:readingappv1/pages/suite/reading_pages.dart';
 import 'package:readingappv1/profile_settings/change_account_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
@@ -31,15 +32,12 @@ void main() {
       getPages: [
         GetPage(name: '/login', page: () => const LoginScreen()),
         GetPage(name: '/signup', page: () => const SignUpScreen()),
-        GetPage(
-            name: '/forgotpassword', page: () => const ForgotPasswordScreen()),
+        GetPage(name: '/forgotpassword', page: () => const ForgotPasswordScreen()),
         GetPage(name: '/screenlayout', page: () => const ScreenLayout()),
         GetPage(name: '/navhome', page: () => const navHomeScreen()),
         GetPage(name: '/statistic', page: () => const StatisticScreen()),
         GetPage(name: '/profile', page: () => const ProfileScreen()),
-        GetPage(
-            name: '/information',
-            page: () => const InformationScreen(data: {})),
+        GetPage(name: '/information', page: () => const InformationScreen(data: {})),
         GetPage(name: '/privacy', page: () => const PrivacyScreen()),
         GetPage(name: '/changeacc', page: () => const ChangeAccounts()),
         GetPage(name: '/graph', page: () => const BarGraphBox()),
@@ -49,6 +47,7 @@ void main() {
         // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
         GetPage(name: '/loading', page: () => const MyLoadingScreen()),
         GetPage(name: '/voice', page: () => VoiceRecorder()),
+        ...ReadingPages.pages,
       ],
     ),
   );

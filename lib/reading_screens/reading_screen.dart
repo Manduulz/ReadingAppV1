@@ -16,17 +16,17 @@ class ReadingScreen extends StatefulWidget {
 class _ReadingScreenState extends State<ReadingScreen> {
   @override
   Widget build(BuildContext context) {
-    log('data : ${widget.data}');
+    log('setgel : ${widget.data}');
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xffE8EFF5),
+        backgroundColor: const Color(0xffE8EFF5),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             PhosphorIcons.arrow_left,
             color: Color(0xff34333080),
             size: 35,
@@ -37,7 +37,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
               onPressed: () {
                 readingShowBottomSheet(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 PhosphorIcons.gear,
                 color: Color(0xff34333080),
                 size: 35,
@@ -47,26 +47,22 @@ class _ReadingScreenState extends State<ReadingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 15)),
-            Align(
+            const Padding(padding: EdgeInsets.only(top: 15)),
+            const Align(
               alignment: Alignment.topCenter,
               child: Text(
                 'Үйл явц',
-                style: TextStyle(
-                    fontStyle: FontStyle.normal,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'InterTight',
-                    color: Colors.black),
+                style:
+                    TextStyle(fontStyle: FontStyle.normal, fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'InterTight', color: Colors.black),
               ),
             ),
             Container(
               height: 5,
               width: MediaQuery.of(context).size.width * 0.8,
               color: Colors.grey,
-              margin: EdgeInsets.symmetric(vertical: 10),
+              margin: const EdgeInsets.symmetric(vertical: 10),
             ),
-            Center(
+            const Center(
               child: Text(
                 '0 / 300',
                 style: TextStyle(
@@ -90,7 +86,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       child: Center(
                           child: Text(
                         widget.data['contentText'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'InterTight',
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w600,
@@ -106,7 +102,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
             Center(
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Хурд (Үг/Мин)',
                     style: TextStyle(
                       fontSize: 14,
@@ -115,7 +111,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                       color: Colors.black,
                     ),
                   ),
-                  Text(
+                  const Text(
                     '0',
                     style: TextStyle(
                       fontSize: 14,
@@ -125,7 +121,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -140,10 +136,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(55)),
-                    child: PlayStopButton(),
+                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(55)),
+                    child: const PlayStopButton(),
                   )
                 ],
               ),

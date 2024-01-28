@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:get/get.dart';
 
 void readingShowBottomSheet(BuildContext context) {
-  double fontsize = 16;
+  RxDouble fontsize = RxDouble(16);
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -60,30 +63,26 @@ void readingShowBottomSheet(BuildContext context) {
                                 width: 120,
                                 child: Container(
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
+                                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(15))),
                                   child: Text(
                                     'Унших',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 12),
+                                    style: TextStyle(fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontSize: 12),
                                   ),
                                 ),
                               ),
                               SizedBox(height: 16),
-                              Text(
-                                'Анивчих',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  fontFamily: 'InterTight',
-                                  color: Colors.black,
-                                ),
-                              )
+                              Obx(() {
+                                return Text(
+                                  'Анивчих',
+                                  style: TextStyle(
+                                    fontSize: fontsize.value,
+                                    fontWeight: FontWeight.w400,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Colors.black,
+                                  ),
+                                );
+                              })
                             ],
                           ),
                           Column(
@@ -96,17 +95,11 @@ void readingShowBottomSheet(BuildContext context) {
                                 child: Container(
                                   padding: EdgeInsets.all(5),
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15))),
+                                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(15))),
                                   child: Text(
                                     'Ном унших нь оюуны ертөнцөөр аялуулж,'
                                     ' орчлон ертөнцийг шинэ өнцгөөс харуулна. ',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 8),
+                                    style: TextStyle(fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontSize: 8),
                                   ),
                                 ),
                               ),
@@ -162,20 +155,16 @@ void readingShowBottomSheet(BuildContext context) {
                                 alignment: Alignment.center,
                                 width: 25,
                                 height: 17,
-                                decoration: BoxDecoration(
-                                    color: Color.fromRGBO(0, 124, 214, 0.20),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                decoration:
+                                    BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
                                 child: InkWell(
                                   onTap: () {
-                                    if (fontsize == 16) {
-                                      fontsize--;
-                                    }
+                                    if (fontsize.value <= 10) return;
+                                    fontsize.value--;
                                   },
                                   child: Text(
                                     'T',
-                                    style: TextStyle(
-                                        fontSize: 12, color: Color(0xff007CD6)),
+                                    style: TextStyle(fontSize: 12, color: Color(0xff007CD6)),
                                   ),
                                 ),
                               ),
@@ -186,21 +175,16 @@ void readingShowBottomSheet(BuildContext context) {
                                   alignment: Alignment.center,
                                   width: 30,
                                   height: 22,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromRGBO(0, 124, 214, 0.20),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5))),
+                                  decoration:
+                                      BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
                                   child: InkWell(
                                     onTap: () {
-                                      if (fontsize == 16) {
-                                        fontsize++;
-                                      }
+                                      if (fontsize.value >= 40) return;
+                                      fontsize.value++;
                                     },
                                     child: Text(
                                       'T',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Color(0xff007CD6)),
+                                      style: TextStyle(fontSize: 16, color: Color(0xff007CD6)),
                                     ),
                                   ),
                                 ),
@@ -236,20 +220,15 @@ void readingShowBottomSheet(BuildContext context) {
                                 alignment: Alignment.center,
                                 width: 25,
                                 height: 17,
-                                decoration: BoxDecoration(
-                                    color: Color.fromRGBO(0, 124, 214, 0.20),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                decoration:
+                                    BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
                                 child: InkWell(
                                   onTap: () {
-                                    if (fontsize == 16) {
-                                      fontsize--;
-                                    }
+                                    fontsize.value--;
                                   },
                                   child: Text(
                                     'A',
-                                    style: TextStyle(
-                                        fontSize: 12, color: Color(0xff007CD6)),
+                                    style: TextStyle(fontSize: 12, color: Color(0xff007CD6)),
                                   ),
                                 ),
                               ),
@@ -260,21 +239,16 @@ void readingShowBottomSheet(BuildContext context) {
                                   alignment: Alignment.center,
                                   width: 30,
                                   height: 22,
-                                  decoration: BoxDecoration(
-                                      color: Color.fromRGBO(0, 124, 214, 0.20),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5))),
+                                  decoration:
+                                      BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
                                   child: InkWell(
                                     onTap: () {
-                                      if (fontsize == 16) {
-                                        fontsize++;
-                                      }
+                                      log('clicked');
+                                      fontsize.value++;
                                     },
                                     child: Text(
-                                      'A',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Color(0xff007CD6)),
+                                      'asdasdasd',
+                                      style: TextStyle(fontSize: 16, color: Color(0xff007CD6)),
                                     ),
                                   ),
                                 ),
