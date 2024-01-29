@@ -3,12 +3,19 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/pages/logic/reading_controller.dart';
 
-import '../../classes/play_stop.dart';
 import '../../reading_screens/reading_screen_settings.dart';
 
-class ReadingScreen extends StatelessWidget {
+///TODO: change statefull to stateless
+///TODO : stateless dotor icon change button nemj chadahgui bna :)),
+class ReadingScreen extends StatefulWidget {
   const ReadingScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ReadingScreen> createState() => _ReadingScreenState();
+}
+
+class _ReadingScreenState extends State<ReadingScreen> {
+  bool isPlaying = false;
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
@@ -49,49 +56,55 @@ class ReadingScreen extends StatelessWidget {
               ],
             ),
             body: Obx(() {
-              return SafeArea(
-                child: Column(
-                  children: [
-                    const Padding(padding: EdgeInsets.only(top: 15)),
-                    const Align(
-                      alignment: Alignment.topCenter,
-                      child: Text(
-                        'Үйл явц',
-                        style: TextStyle(
-                            fontStyle: FontStyle.normal, fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'InterTight', color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      height: 5,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      color: Colors.grey,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                    ),
-                    Center(
-                      child: Text(
-                        '${controller.state.readWords} / ${controller.state.bookData['contentText'].split(' ').length - 1}',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          fontStyle: FontStyle.normal,
-                          fontFamily: 'InterTight',
-                          color: Colors.black,
+              return SingleChildScrollView(
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      const Padding(padding: EdgeInsets.only(top: 15)),
+                      const Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Үйл явц',
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'InterTight',
+                              color: Colors.black),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: SizedBox(
-                        height: 300,
-                        child: Card(
-                          elevation: 20,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SingleChildScrollView(
-                              child: Center(
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: controller.state.content,
+                      Container(
+                        height: 5,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        color: Colors.grey,
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                      ),
+                      Center(
+                        child: Text(
+                          '${controller.state.readWords} / ${controller.state.bookData['contentText'].split(' ').length - 1}',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.normal,
+                            fontFamily: 'InterTight',
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: SizedBox(
+                          height: 300,
+                          child: Card(
+                            elevation: 20,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SingleChildScrollView(
+                                child: Center(
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: controller.state.content,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -99,64 +112,76 @@ class ReadingScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
-                    Center(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Хурд (Үг/Мин)',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontStyle: FontStyle.normal,
-                              fontFamily: 'InterTight',
-                              color: Colors.black,
+                      Center(
+                        child: Column(
+                          children: [
+                            const Text(
+                              'Хурд (Үг/Мин)',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontStyle: FontStyle.normal,
+                                fontFamily: 'InterTight',
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '${controller.state.readWords}',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontStyle: FontStyle.normal,
-                              fontFamily: 'InterTight',
-                              color: Colors.black,
+                            Text(
+                              '${controller.state.readWords}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontStyle: FontStyle.normal,
+                                fontFamily: 'InterTight',
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Slider(
-                                  min: 0,
-                                  max: 100,
-                                  value: controller.state.slideValue.value,
-                                  onChanged: (double value) {
-                                    controller.state.slideValue.value = value;
-                                  },
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Slider(
+                                    min: 0,
+                                    max: 100,
+                                    value: controller.state.slideValue.value,
+                                    onChanged: (double value) {
+                                      controller.state.slideValue.value = value;
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                controller.state.isPlaying.value =
+                                    !controller.state.isPlaying.value;
+                                controller.onClickPlay();
+                                setState(() {
+                                  isPlaying = !isPlaying;
+                                });
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(55)),
+                                height: 50,
+                                width: 50,
+                                child: Icon(
+                                  isPlaying
+                                      ? PhosphorIcons.stop
+                                      : PhosphorIcons.microphone,
+                                  size: 28,
+                                  color: Colors.white,
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              controller.state.isPlaying.value = !controller.state.isPlaying.value;
-
-                              controller.onClickPlay();
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              color: Colors.amber,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(55)),
-                            child: const PlayStopButton(),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                            // Container(
+                            //   decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(55)),
+                            //   child: const PlayStopButton(),
+                            // ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               );
             }),

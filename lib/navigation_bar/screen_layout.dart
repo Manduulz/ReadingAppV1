@@ -125,80 +125,79 @@ class _ScreenLayoutState extends State<ScreenLayout> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 75,
         child: CupertinoTabBar(
           backgroundColor: Color(0xffE8EFF5),
           onTap: navigationTapped,
           items: [
             BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      PhosphorIcons.house,
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    PhosphorIcons.house,
+                    color: _page == 0 ? Color(0xff007CD6) : Colors.white,
+                    size: 32,
+                  ),
+                  Text(
+                    'Нүүр',
+                    style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 10,
                       color: _page == 0 ? Color(0xff007CD6) : Colors.white,
-                      size: 32,
                     ),
-                    Text(
-                      'Нүүр',
-                      style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 10,
-                        color: _page == 0 ? Color(0xff007CD6) : Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-                backgroundColor: Colors.white,
-                label: ''),
+                  )
+                ],
+              ),
+              // backgroundColor: Colors.white,
+            ),
             BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      PhosphorIcons.chart_bar,
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    PhosphorIcons.chart_bar,
+                    color: _page == 1 ? Color(0xff007CD6) : Colors.white,
+                    size: 32,
+                  ),
+                  Text(
+                    'Статистик',
+                    style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 10,
                       color: _page == 1 ? Color(0xff007CD6) : Colors.white,
-                      size: 32,
                     ),
-                    Text(
-                      'Статистик',
-                      style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 10,
-                        color: _page == 1 ? Color(0xff007CD6) : Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-                backgroundColor: Colors.white,
-                label: ''),
+                  )
+                ],
+              ),
+              backgroundColor: Colors.white,
+            ),
             BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      PhosphorIcons.user_circle,
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    PhosphorIcons.user_circle,
+                    color: _page == 2 ? Color(0xff007CD6) : Colors.white,
+                    size: 32,
+                  ),
+                  Text(
+                    'Хэрэглэгч',
+                    style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 10,
                       color: _page == 2 ? Color(0xff007CD6) : Colors.white,
-                      size: 32,
                     ),
-                    Text(
-                      'Хэрэглэгч',
-                      style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 10,
-                        color: _page == 2 ? Color(0xff007CD6) : Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-                backgroundColor: Colors.white,
-                label: ''),
+                  )
+                ],
+              ),
+              backgroundColor: Colors.white,
+            ),
           ],
         ),
       ),

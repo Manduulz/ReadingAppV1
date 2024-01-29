@@ -36,7 +36,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0.0,
-        backgroundColor: Color(0xffE8EFF5),
+        backgroundColor: const Color(0xffE8EFF5),
         centerTitle: true,
 
         // bottom: PreferredSize(
@@ -44,7 +44,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
         //   child: Padding(padding: const EdgeInsets.all(20.0)),
         // ),
 
-        title: Text(
+        title: const Text(
           'Статистик',
           style: TextStyle(
               fontFamily: 'InterTight',
@@ -57,385 +57,281 @@ class _StatisticScreenState extends State<StatisticScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 15, 0, 0),
-                  child: Text(
-                    'Өнөөдөр',
-                    style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24,
-                        color: Colors.black),
-                  ),
+                const Text(
+                  'Өнөөдөр',
+                  style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Colors.black),
                 ),
+                const SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Уншсан',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
                               ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(12, 8, 0, 0),
-                                  child: Text(
-                                    'Уншсан',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 0, top: 0, right: 10, bottom: 0),
-                                  child: Text(
-                                    '0 үг',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xff007CD6)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                              Text(
+                                '0 үг',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xff007CD6)),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Хурд',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
                               ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(4, 8, 13, 0),
-                                  child: Text(
-                                    'Хурд',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12, top: 0, right: 0, bottom: 0),
-                                  child: Text(
-                                    '0 үг/мин',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xffFF9501)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                              Text(
+                                '0 үг/мин',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xffFF9501)),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Сүүлийн 7 хоног',
+                  style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Colors.black),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Уншсан',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
+                              ),
+                              Text(
+                                '0 үг',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xff007CD6)),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Хурд',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
+                              ),
+                              Text(
+                                '0 үг/мин',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xffFF9501)),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 25, 0, 0),
-                  child: Text(
-                    'Сүүлийн 7 хоног',
-                    style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24,
-                        color: Colors.black),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(12, 8, 0, 0),
-                                  child: Text(
-                                    'Уншсан',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 0, top: 0, right: 10, bottom: 0),
-                                  child: Text(
-                                    '0 үг',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xff007CD6)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(4, 8, 13, 0),
-                                  child: Text(
-                                    'Хурд',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12, top: 0, right: 0, bottom: 0),
-                                  child: Text(
-                                    '0 үг/мин',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xffFF9501)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: SizedBox(
                     height: 200,
                     width: 350,
                     child: Container(
-                        color: Color(0xffE8EFF5),
+                        color: const Color(0xffE8EFF5),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,
                         )),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
-                  child: Text(
-                    'Сүүлийн 4 долоо хоног',
-                    style: TextStyle(
-                        fontFamily: 'InterTight',
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24,
-                        color: Colors.black),
-                  ),
+                const Text(
+                  'Сүүлийн 4 долоо хоног',
+                  style: TextStyle(
+                      fontFamily: 'InterTight',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Colors.black),
                 ),
+                const SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Уншсан',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
                               ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(12, 8, 0, 0),
-                                  child: Text(
-                                    'Уншсан',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 0, top: 0, right: 10, bottom: 0),
-                                  child: Text(
-                                    '0 үг',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xff007CD6)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                              Text(
+                                '0 үг',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xff007CD6)),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-                      child: Container(
-                        width: 167,
-                        height: 54,
-                        color: Color(0xffE8EFF5),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 18, top: 0, right: 0, bottom: 0),
-                              child: Icon(
-                                PhosphorIcons.caret_circle_up,
-                                color: Colors.grey,
-                                size: 35,
+                    Container(
+                      color: const Color(0xffE8EFF5),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            PhosphorIcons.caret_circle_up,
+                            color: Colors.grey,
+                            size: 35,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Хурд',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontFamily: 'InterTight',
+                                    color: Color.fromRGBO(0, 0, 0, 0.50)),
                               ),
-                            ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(4, 8, 13, 0),
-                                  child: Text(
-                                    'Хурд',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontFamily: 'InterTight',
-                                        color: Color.fromRGBO(0, 0, 0, 0.50)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12, top: 0, right: 0, bottom: 0),
-                                  child: Text(
-                                    '0 үг/мин',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 14,
-                                        color: Color(0xffFF9501)),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                              Text(
+                                '0 үг/мин',
+                                style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Color(0xffFF9501)),
+                              )
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: SizedBox(
                     height: 200,
                     width: 350,
                     child: Container(
-                        color: Color(0xffE8EFF5),
+                        color: const Color(0xffE8EFF5),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,
@@ -445,7 +341,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 Center(
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       'Статистик Шинэчлэх',
                       style: TextStyle(
                         fontSize: 20,

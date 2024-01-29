@@ -114,8 +114,8 @@ class _BooksScreenState extends State<BooksScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {},

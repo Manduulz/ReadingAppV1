@@ -160,67 +160,121 @@ class _SignUpScreenState extends State<SignUpScreen> {
           },
         ),
       ),
-      body: SafeArea(
-        child: Obx(() {
-          return Padding(
-            padding: const EdgeInsets.only(right: 45, left: 45),
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.only(left: 5),
-              child: isLoading.value
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Бүртгүүлэх',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: 'InterTight',
-                              fontSize: 24,
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black),
-                        ),
-                        const SizedBox(height: 50),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller: _firstNameController,
-                            keyboardType: TextInputType.name,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(
-                                  PhosphorIcons.user_circle,
-                                  color: Color.fromRGBO(0, 124, 214, 0.50),
-                                ),
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                        color: Colors.lightBlueAccent)),
-                                hintText: 'Овог',
-                                hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Obx(() {
+            return Padding(
+              padding: const EdgeInsets.only(right: 45, left: 45),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(left: 5),
+                child: isLoading.value
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Бүртгүүлэх',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'InterTight',
+                                fontSize: 24,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
                           ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller: _lastNameController,
-                            keyboardType: TextInputType.name,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
+                          const SizedBox(height: 50),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller: _firstNameController,
+                              keyboardType: TextInputType.name,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(
+                                    PhosphorIcons.user_circle,
+                                    color: Color.fromRGBO(0, 124, 214, 0.50),
+                                  ),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'Овог',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller: _lastNameController,
+                              keyboardType: TextInputType.name,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(PhosphorIcons.user_circle,
+                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'Нэр',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller: _birthDayController,
+                              readOnly: true,
+                              onTap: () => _selectDate(context),
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(PhosphorIcons.calendar_blank,
+                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'Төрсөн Он Сар Өдөр',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller:
+                                  TextEditingController(text: selectedGender),
+                              readOnly: true,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
                                 prefixIcon: Icon(PhosphorIcons.user_circle,
                                     color: Color.fromRGBO(0, 124, 214, 0.50)),
                                 border: InputBorder.none,
@@ -231,169 +285,123 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         BorderRadius.all(Radius.circular(10)),
                                     borderSide: BorderSide(
                                         color: Colors.lightBlueAccent)),
-                                hintText: 'Нэр',
+                                hintText: 'Хүйс',
                                 hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller: _birthDayController,
-                            readOnly: true,
-                            onTap: () => _selectDate(context),
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(PhosphorIcons.calendar_blank,
-                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                        color: Colors.lightBlueAccent)),
-                                hintText: 'Төрсөн Он Сар Өдөр',
-                                hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller:
-                                TextEditingController(text: selectedGender),
-                            readOnly: true,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(PhosphorIcons.user_circle,
-                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: Colors.white,
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  borderSide: BorderSide(
-                                      color: Colors.lightBlueAccent)),
-                              hintText: 'Хүйс',
-                              hintStyle: TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50),
-                              ),
-                            ),
-                            onTap: () {
-                              _showGenderPicker(context);
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller: _emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(PhosphorIcons.envelope,
-                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                        color: Colors.lightBlueAccent)),
-                                hintText: 'И-Мейл',
-                                hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            controller: _phoneNumberController,
-                            keyboardType: TextInputType.phone,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(PhosphorIcons.phone,
-                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                        color: Colors.lightBlueAccent)),
-                                hintText: 'Утас',
-                                hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        SizedBox(
-                          height: 51,
-                          child: TextField(
-                            obscureText: true,
-                            controller: _passwordController,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(0, 124, 214, 0.50)),
-                            decoration: const InputDecoration(
-                                prefixIcon: Icon(PhosphorIcons.key,
-                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                border: InputBorder.none,
-                                filled: true,
-                                fillColor: Colors.white,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    borderSide: BorderSide(
-                                        color: Colors.lightBlueAccent)),
-                                hintText: 'Нууц Үг Үүсгэх',
-                                hintStyle: TextStyle(
-                                    color: Color.fromRGBO(0, 124, 214, 0.50))),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromRGBO(0, 124, 214, 0.50),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5))),
-                            onPressed: () {
-                              signUp();
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2)),
-                              child: const Text(
-                                textAlign: TextAlign.center,
-                                'Бүртгэл үүсгэх',
-                                style: TextStyle(
-                                  fontFamily: 'InterTight',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
+                                  color: Color.fromRGBO(0, 124, 214, 0.50),
                                 ),
                               ),
-                            )),
-                      ],
-                    ),
-            ),
-          );
-        }),
+                              onTap: () {
+                                _showGenderPicker(context);
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(PhosphorIcons.envelope,
+                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'И-Мейл',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              controller: _phoneNumberController,
+                              keyboardType: TextInputType.phone,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(PhosphorIcons.phone,
+                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'Утас',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            height: 51,
+                            child: TextField(
+                              obscureText: true,
+                              controller: _passwordController,
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50)),
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(PhosphorIcons.key,
+                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                  border: InputBorder.none,
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      borderSide: BorderSide(
+                                          color: Colors.lightBlueAccent)),
+                                  hintText: 'Нууц Үг Үүсгэх',
+                                  hintStyle: TextStyle(
+                                      color:
+                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromRGBO(0, 124, 214, 0.50),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5))),
+                              onPressed: () {
+                                signUp();
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(2)),
+                                child: const Text(
+                                  textAlign: TextAlign.center,
+                                  'Бүртгэл үүсгэх',
+                                  style: TextStyle(
+                                    fontFamily: 'InterTight',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )),
+                        ],
+                      ),
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

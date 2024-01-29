@@ -63,10 +63,16 @@ void readingShowBottomSheet(BuildContext context) {
                                 width: 120,
                                 child: Container(
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(15))),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
                                   child: Text(
                                     'Унших',
-                                    style: TextStyle(fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontSize: 12),
+                                    style: TextStyle(
+                                        fontFamily: 'InterTight',
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 12),
                                   ),
                                 ),
                               ),
@@ -95,11 +101,17 @@ void readingShowBottomSheet(BuildContext context) {
                                 child: Container(
                                   padding: EdgeInsets.all(5),
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(15))),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
                                   child: Text(
                                     'Ном унших нь оюуны ертөнцөөр аялуулж,'
                                     ' орчлон ертөнцийг шинэ өнцгөөс харуулна. ',
-                                    style: TextStyle(fontFamily: 'InterTight', fontStyle: FontStyle.normal, fontSize: 8),
+                                    style: TextStyle(
+                                        fontFamily: 'InterTight',
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 8),
                                   ),
                                 ),
                               ),
@@ -155,8 +167,10 @@ void readingShowBottomSheet(BuildContext context) {
                                 alignment: Alignment.center,
                                 width: 25,
                                 height: 17,
-                                decoration:
-                                    BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(0, 124, 214, 0.20),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
                                 child: InkWell(
                                   onTap: () {
                                     if (fontsize.value <= 10) return;
@@ -164,7 +178,8 @@ void readingShowBottomSheet(BuildContext context) {
                                   },
                                   child: Text(
                                     'T',
-                                    style: TextStyle(fontSize: 12, color: Color(0xff007CD6)),
+                                    style: TextStyle(
+                                        fontSize: 12, color: Color(0xff007CD6)),
                                   ),
                                 ),
                               ),
@@ -175,8 +190,10 @@ void readingShowBottomSheet(BuildContext context) {
                                   alignment: Alignment.center,
                                   width: 30,
                                   height: 22,
-                                  decoration:
-                                      BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 124, 214, 0.20),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5))),
                                   child: InkWell(
                                     onTap: () {
                                       if (fontsize.value >= 40) return;
@@ -184,7 +201,9 @@ void readingShowBottomSheet(BuildContext context) {
                                     },
                                     child: Text(
                                       'T',
-                                      style: TextStyle(fontSize: 16, color: Color(0xff007CD6)),
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xff007CD6)),
                                     ),
                                   ),
                                 ),
@@ -220,15 +239,18 @@ void readingShowBottomSheet(BuildContext context) {
                                 alignment: Alignment.center,
                                 width: 25,
                                 height: 17,
-                                decoration:
-                                    BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
+                                decoration: BoxDecoration(
+                                    color: Color.fromRGBO(0, 124, 214, 0.20),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5))),
                                 child: InkWell(
                                   onTap: () {
                                     fontsize.value--;
                                   },
                                   child: Text(
                                     'A',
-                                    style: TextStyle(fontSize: 12, color: Color(0xff007CD6)),
+                                    style: TextStyle(
+                                        fontSize: 12, color: Color(0xff007CD6)),
                                   ),
                                 ),
                               ),
@@ -239,16 +261,20 @@ void readingShowBottomSheet(BuildContext context) {
                                   alignment: Alignment.center,
                                   width: 30,
                                   height: 22,
-                                  decoration:
-                                      BoxDecoration(color: Color.fromRGBO(0, 124, 214, 0.20), borderRadius: BorderRadius.all(Radius.circular(5))),
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 124, 214, 0.20),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5))),
                                   child: InkWell(
                                     onTap: () {
                                       log('clicked');
                                       fontsize.value++;
                                     },
                                     child: Text(
-                                      'asdasdasd',
-                                      style: TextStyle(fontSize: 16, color: Color(0xff007CD6)),
+                                      'A',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xff007CD6)),
                                     ),
                                   ),
                                 ),

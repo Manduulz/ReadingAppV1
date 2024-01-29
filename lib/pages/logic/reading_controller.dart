@@ -18,7 +18,9 @@ class ReadingController extends GetxController {
   }
 
   List<TextSpan> setContentText() {
-    for (var index = 0; index < state.bookData['contentText'].split(' ').length; index++) {
+    for (var index = 0;
+        index < state.bookData['contentText'].split(' ').length;
+        index++) {
       state.content.add(
         TextSpan(
           text: '${state.bookData['contentText'].split(' ')[index]} ',
@@ -26,7 +28,7 @@ class ReadingController extends GetxController {
             fontFamily: 'InterTight',
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Colors.grey,
             fontSize: 24,
           ),
         ),
@@ -37,7 +39,9 @@ class ReadingController extends GetxController {
 
   List<TextSpan> getContentText(int currentWordIndex) {
     state.content = [];
-    for (var index = 0; index < state.bookData['contentText'].split(' ').length; index++) {
+    for (var index = 0;
+        index < state.bookData['contentText'].split(' ').length;
+        index++) {
       state.content.add(
         TextSpan(
           text: '${state.bookData['contentText'].split(' ')[index]} ',
@@ -46,7 +50,7 @@ class ReadingController extends GetxController {
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w600,
             fontSize: 24,
-            color: currentWordIndex == index ? Colors.red : Colors.black,
+            color: currentWordIndex == index ? Colors.black : Colors.grey,
           ),
         ),
       );
@@ -60,10 +64,11 @@ class ReadingController extends GetxController {
     } else {
       timer?.cancel();
       state.readWords.value = 0;
-      timer = Timer.periodic(1.seconds, (timer) {
+      timer = Timer.periodic(0.5.seconds, (timer) {
         state.readWords.value++;
         getContentText(state.readWords.value);
-        if (state.readWords.value == state.bookData['contentText'].split(' ').length - 1) {
+        if (state.readWords.value ==
+            state.bookData['contentText'].split(' ').length - 1) {
           timer.cancel();
         }
       });
