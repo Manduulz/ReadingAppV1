@@ -125,7 +125,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                               ),
                             ),
                             Text(
-                              '${controller.state.readWords}',
+                              '${controller.state.slideValue.value}',
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontStyle: FontStyle.normal,
@@ -140,7 +140,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                 children: [
                                   Slider(
                                     min: 0,
-                                    max: 100,
+                                    max: 250,
                                     value: controller.state.slideValue.value,
                                     onChanged: (double value) {
                                       controller.state.slideValue.value = value;
