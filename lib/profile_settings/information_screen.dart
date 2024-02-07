@@ -3,6 +3,10 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:get/get.dart';
+import 'package:readingappv1/service/api_helper.dart';
+
+import '../service/method.dart';
 
 class InformationScreen extends StatefulWidget {
   final dynamic data;
@@ -31,25 +35,43 @@ class _PrivacyScreenState extends State<InformationScreen> {
   Future<void> updateAccount() async {
     log('saveinformation called');
     dynamic body = {
+      "id" : 20,
       "firstName": _firstNameController.text,
       "lastName": _lastNameController.text,
       "email": _emailController.text,
       "phone": _phoneNumberController.text,
+      "status": "Active",
+      "schoolId": 0,
     };
     log('body : $body');
 
     /// TODO : Delete
 
-    dynamic response = await dio.put(
-        'https://speedreaderbackend.azurewebsites.net/api/accounts/update',
-        data: body);
+    var response = await ApiHelper.instance.sendHttpRequest(
+      urlPath: '/api/accounts/update',
+      method: Method.put,
+      body: body,
+    );
+
+    Future<void> getAccount() async {
+      dynamic body = {
+        'firstName' : widget.data['firstName'],
+        'lastName' : widget.data['lastName'],
+        'email' : widget.data['email'],
+        'phone' : widget.data['phone'],
+      };
+    }
+
+    dynamic responseGet = await dio
+        .get('https://speedreaderbackend.azurewebsites.net/api/accounts/get', data: body);
 
     log('accounts get response : $response');
   }
 
   @override
   Widget build(BuildContext context) {
-    log('log : ${widget.data['lastName']}');
+    log('log : ${widget.data['phone']}');
+
 
     return Scaffold(
       appBar: AppBar(
@@ -118,7 +140,7 @@ class _PrivacyScreenState extends State<InformationScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           borderSide:
                               BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
-                      hintText: widget.data?['firstName'] ?? 'Овог',
+                      hintText: widget.data['lastName'] ?? 'Овог',
                       hintStyle: const TextStyle(
                           color: Color.fromRGBO(0, 0, 0, 0.50))),
                 ),

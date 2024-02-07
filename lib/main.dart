@@ -18,6 +18,8 @@ import 'package:readingappv1/profile_settings/privacy_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
 import 'package:readingappv1/service/my_storage.dart';
 import 'package:readingappv1/sign_up_screen.dart';
+import 'package:readingappv1/voice/speak.dart';
+
 
 import 'profile_settings/information_screen.dart';
 
@@ -28,7 +30,7 @@ void main() {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/voice/record',
       getPages: [
         GetPage(name: '/login', page: () => const LoginScreen()),
         GetPage(name: '/signup', page: () => const SignUpScreen()),
@@ -47,6 +49,7 @@ void main() {
         // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
         GetPage(name: '/loading', page: () => const MyLoadingScreen()),
         GetPage(name: '/voice', page: () => VoiceRecorder()),
+        GetPage(name: '/voice/record', page: () => SpeakScreen()),
         ...ReadingPages.pages,
       ],
     ),

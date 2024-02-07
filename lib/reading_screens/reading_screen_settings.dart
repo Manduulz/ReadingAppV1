@@ -105,13 +105,38 @@ void readingShowBottomSheet(BuildContext context) {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
-                                  child: Text(
-                                    'Ном унших нь оюуны ертөнцөөр аялуулж,'
-                                    ' орчлон ертөнцийг шинэ өнцгөөс харуулна. ',
-                                    style: TextStyle(
-                                        fontFamily: 'InterTight',
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 8),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'Ном унших нь оюуны ',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'InterTight',
+                                            fontSize: 8,
+                                            fontStyle: FontStyle.normal
+                                          )
+                                        ),
+                                        TextSpan(
+                                          text: 'ертөнцөөр',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontFamily: 'InterTight',
+                                              fontSize: 8,
+                                              fontStyle: FontStyle.normal
+                                          )
+                                        ),
+                                        TextSpan(
+                                          text: ' аялуулж,орчлон ертөнцийг шинэ өнцгөөс харуулна.',
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontFamily: 'InterTight',
+                                                fontSize: 8,
+                                                fontStyle: FontStyle.normal
+                                            )
+                                        )
+                                      ]
+                                    )
                                   ),
                                 ),
                               ),

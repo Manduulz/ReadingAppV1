@@ -5,6 +5,7 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:readingappv1/classes/play_stop.dart';
 import 'package:readingappv1/reading_screens/reading_screen_settings.dart';
 
+
 class ReadingScreen extends StatefulWidget {
   final dynamic data;
   ReadingScreen({super.key, required this.data});
