@@ -15,6 +15,7 @@ class ReadingScreen extends StatefulWidget {
 }
 
 class _ReadingScreenState extends State<ReadingScreen> {
+  double _currentSliderValue = 0;
   bool isPlaying = false;
   @override
   Widget build(BuildContext context) {
@@ -73,12 +74,21 @@ class _ReadingScreenState extends State<ReadingScreen> {
                               color: Colors.black),
                         ),
                       ),
-                      Container(
-                        height: 5,
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        color: Colors.grey,
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                      ),
+                      // Slider(
+                      //   value: _currentSliderValue,
+                      //   min: 0,
+                      //   max: 49,
+                      //   divisions: 10,
+                      //   label: _currentSliderValue.round().toString(),
+                      //   activeColor: Colors.blue, // Set the color of the active part of the slider line
+                      //   inactiveColor: Colors.grey, // Set the color of the inactive part of the slider line
+                      //   onChanged: (double value) {
+                      //     setState(() {
+                      //       _currentSliderValue = value;
+                      //     });
+                      //   },
+                      // ),
+                      ///TODO: line slider add !!
                       Center(
                         child: Text(
                           '${controller.state.readWords} / ${controller.state.bookData['contentText'].split(' ').length - 1}',
@@ -141,6 +151,8 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                   Slider(
                                     min: 0,
                                     max: 250,
+                                    divisions: 50,
+                                    label: _currentSliderValue.round().toString(),
                                     value: controller.state.slideValue.value,
                                     onChanged: (double value) {
                                       controller.state.slideValue.value = value;

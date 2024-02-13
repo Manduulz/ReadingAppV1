@@ -9,7 +9,7 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
         leadingWidth: 100,
         leading: TextButton(
           onPressed: (){},
-          child: Row(children: [
+          child: const Row(children: [
             Icon(
               PhosphorIcons.caret_left,
               color: Colors.black,
@@ -26,18 +26,18 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
             child: InkWell(
               onTap: (){},
               child: Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(width: 1,color: Color(0xFFE2E8F0)),
+                    side: const BorderSide(width: 1,color: Color(0xFFE2E8F0)),
                     borderRadius: BorderRadius.circular(10),
                   )
                 ),
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(30),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(30),
+                  decoration: const BoxDecoration(
                     gradient: RadialGradient(
                       center: Alignment(1,1),
                       radius: 1,
@@ -48,7 +48,7 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -71,14 +71,14 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             decoration: ShapeDecoration(
-                              color: Color(0xFFEF4444),
+                              color: const Color(0xFFEF4444),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(35),
                               ),
                               shadows: [
-                                BoxShadow(
+                                const BoxShadow(
                                   color: Color(0x7FEF4444),
                                   blurRadius: 20,
                                   offset: Offset(0, 0),
@@ -86,7 +86,7 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                                 )
                               ]
                             ),
-                            child: Icon(
+                            child: const Icon(
                               PhosphorIcons.microphone,
                               color: Colors.white,
                               size: 30,
@@ -104,18 +104,18 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
             child: InkWell(
               onTap: (){},
               child: Container(
-                margin: EdgeInsets.only(left: 20, bottom: 20,right: 20),
+                margin: const EdgeInsets.only(left: 20, bottom: 20,right: 20),
                 decoration: ShapeDecoration(
                   color: Colors.white,
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFE2E9F0)),
+                      side: const BorderSide(width: 1, color: Color(0xFFE2E9F0)),
                       borderRadius: BorderRadius.circular(10),
                     )
                 ),
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(30),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(30),
+                  decoration: const BoxDecoration(
                     gradient: RadialGradient(
                       center: Alignment(1,1),
                         radius: 1,
@@ -126,7 +126,7 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -149,14 +149,14 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             decoration: ShapeDecoration(
-                              color: Color(0xFF22C55E),
+                              color: const Color(0xFF22C55E),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(35),
                               ),
                               shadows: [
-                                BoxShadow(
+                                const BoxShadow(
                                   color: Color(0x7F22C55E),
                                   blurRadius: 20,
                                   offset: Offset(0, 0),
@@ -164,7 +164,7 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
                                 )
                               ]
                             ),
-                            child: Icon(
+                            child: const Icon(
                               PhosphorIcons.headphones,
                               color: Colors.white,
                               size: 30,

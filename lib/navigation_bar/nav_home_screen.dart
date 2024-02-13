@@ -182,7 +182,6 @@ class _navHomeScreenState extends State<navHomeScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]),
                     child: SizedBox(
-                      width: 350,
                       height: 80,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,

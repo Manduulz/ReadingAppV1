@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:get/get.dart';
 import 'package:readingappv1/buttons.dart';
 
 class ListenScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class _ListenScreenState extends State<ListenScreen> {
         leadingWidth: 100,
         leading: TextButton(
           onPressed: (){},
-          child: Row(children: [
+          child: const Row(children: [
             Icon(
               PhosphorIcons.caret_left,
               color: Colors.black,
@@ -29,7 +28,7 @@ class _ListenScreenState extends State<ListenScreen> {
             )
           ],),
         ),
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Column(
@@ -74,11 +73,11 @@ class _ListenScreenState extends State<ListenScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Click',
                 style: TextStyle(
                   color: Colors.black,
@@ -86,14 +85,14 @@ class _ListenScreenState extends State<ListenScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
-                child: Icon(
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                child: const Icon(
                   PhosphorIcons.play,
                   color: Color(0xFF22C55E),
                   size: 17,
                 ),
               ),
-              Text(
+              const Text(
                 'then listen',
                 style: TextStyle(
                   color: Colors.black,
@@ -102,22 +101,22 @@ class _ListenScreenState extends State<ListenScreen> {
               )
             ],
           ),
-          Text(
+          const Text(
             'Did they accurately speak the sentence?',
             style: TextStyle(
               color: Colors.black,
               fontSize: 14,
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                padding: EdgeInsets.all(30),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.all(30),
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
                   color: Colors.white,
-                  shadows: [
+                  shadows: const [
                     BoxShadow(
                       color: Color(0x3FCBD5E1),
                       blurRadius: 10,
@@ -132,7 +131,7 @@ class _ListenScreenState extends State<ListenScreen> {
                 child: Container(
                   alignment: Alignment.center,
                   width: double.infinity,
-                  child: Text(
+                  child: const Text(
                     'The family also shifts to Ramapuram',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -144,20 +143,20 @@ class _ListenScreenState extends State<ListenScreen> {
                 ),
               )
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(vertical: 30),
             alignment: Alignment.center,
             child: Container(
               width: 70,
               height: 70,
               decoration: ShapeDecoration(
-                color: Color(0xFF22C55E),
+                color: const Color(0xFF22C55E),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35),
                 ),
                 shadows: [
-                  BoxShadow(
+                  const BoxShadow(
                     color: Color(0x7F22C55E),
                     blurRadius: 20,
                     offset: Offset(0, 0),
@@ -167,7 +166,7 @@ class _ListenScreenState extends State<ListenScreen> {
               ),
               child: IconButton(
                 onPressed: (){},
-                icon: Icon(
+                icon: const Icon(
                   PhosphorIcons.play,
                   color: Colors.white,
                     size: 30,
@@ -176,7 +175,7 @@ class _ListenScreenState extends State<ListenScreen> {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -189,7 +188,7 @@ class _ListenScreenState extends State<ListenScreen> {
                       onPressed: (){},
                     )
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Expanded(
                     child: ButtonWithTextAndIcon(
                       text: 'Incorrect',

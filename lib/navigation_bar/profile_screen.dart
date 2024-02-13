@@ -173,6 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
+                          SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -188,14 +189,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       color: Colors.black),
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {
+                              InkWell(
+                                onTap: () {
                                   Get.toNamed('/changeacc');
                                 },
-                                child: const Padding(
+                                child: Padding(
                                   padding: EdgeInsets.only(right: 25.0),
                                   child: Text(
-                                    'З.Мандуул',
+                                    '${controller.userData['firstName'].substring(0, 1)}.${controller.userData['lastName']}',
                                     style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,

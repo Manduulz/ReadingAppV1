@@ -15,6 +15,7 @@ class ReadingScreen extends StatefulWidget {
 }
 
 class _ReadingScreenState extends State<ReadingScreen> {
+  double _currentSliderValue = 0;
   @override
   Widget build(BuildContext context) {
     log('setgel : ${widget.data}');
@@ -129,9 +130,13 @@ class _ReadingScreenState extends State<ReadingScreen> {
                         Slider(
                             min: 0,
                             max: 100,
-                            value: 0,
+                            value: _currentSliderValue,
+                            divisions: 10,
+                            label: _currentSliderValue.round().toString(),
                             onChanged: (double value) {
-                              setState(() {});
+                              setState(() {
+                                _currentSliderValue = value;
+                              });
                             }),
                       ],
                     ),

@@ -94,12 +94,12 @@ class _SpeakScreenState extends State<SpeakScreen> {
         leadingWidth: 100,
         leading: TextButton(
           onPressed: (){},
-          child: Row(children: [
+          child: const Row(children: [
             Icon(PhosphorIcons.caret_left,color: Colors.black,),
             Text('Speak', style: TextStyle(color: Colors.black),)
           ],),
         ),
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
@@ -139,11 +139,11 @@ class _SpeakScreenState extends State<SpeakScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Click',
                 style: TextStyle(
                   color: Colors.black,
@@ -151,14 +151,14 @@ class _SpeakScreenState extends State<SpeakScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
-                child: Icon(
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                child: const Icon(
                   PhosphorIcons.microphone,
                   color: Color(0xFFEF4444),
                   size: 17,
                 ),
               ),
-              Text(
+              const Text(
                 'then read the sentence aloud',
                 style: TextStyle(
                   color: Colors.black,
@@ -167,16 +167,16 @@ class _SpeakScreenState extends State<SpeakScreen> {
               )
             ],
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Expanded(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                padding: EdgeInsets.all(30),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.all(30),
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shadows: [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Color(0x3FCBD5E1),
                       blurRadius: 10,
                       offset: Offset(0,4),
@@ -190,7 +190,7 @@ class _SpeakScreenState extends State<SpeakScreen> {
                 child: Container(
                   alignment: Alignment.center,
                   width: double.infinity,
-                  child: Text(
+                  child: const Text(
                     'The family also shifts to Ramapuram',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -202,8 +202,8 @@ class _SpeakScreenState extends State<SpeakScreen> {
                 ),
               )
           ),
-          SizedBox(height: 30),
-          audioFile != null ? Text('Successfully recorded!') : Container(),
+          const SizedBox(height: 30),
+          audioFile != null ? const Text('Successfully recorded!') : Container(),
           audioFile != null ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -215,7 +215,7 @@ class _SpeakScreenState extends State<SpeakScreen> {
                 size: 'small',
                 type: 'secondary',
               ),
-              SizedBox(width: 30),
+              const SizedBox(width: 30),
               ButtonWithIcon(
                   onPressed: () {
                     setState(() {
@@ -227,14 +227,14 @@ class _SpeakScreenState extends State<SpeakScreen> {
                 type: 'secondary',
               )
             ],
-          ):SizedBox(height: 68),
-              SizedBox(height: 30),
+          ):const SizedBox(height: 68),
+              const SizedBox(height: 30),
           IconButton(
             style: IconButton.styleFrom(
-              shape: CircleBorder(),
-              backgroundColor: Color(0xFFEF4444),
-              disabledBackgroundColor: Color.fromRGBO(40, 239, 68, 68),
-              padding: EdgeInsets.all(20),
+              shape: const CircleBorder(),
+              backgroundColor: const Color(0xFFEF4444),
+              disabledBackgroundColor: const Color.fromRGBO(40, 239, 68, 68),
+              padding: const EdgeInsets.all(20),
             ),
             onPressed: audioFile == null ? () async {
               if(isRecording) {
@@ -250,7 +250,7 @@ class _SpeakScreenState extends State<SpeakScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(vertical: 30),
             alignment: Alignment.center,
             child: ButtonWithTextAndIcon(
               onPressed: audioFile == null ? null : (){},

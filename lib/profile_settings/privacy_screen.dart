@@ -1,5 +1,10 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:readingappv1/service/api_helper.dart';
+import 'package:readingappv1/service/method.dart';
 
 class PrivacyScreen extends StatefulWidget {
   const PrivacyScreen({super.key});
@@ -9,15 +14,32 @@ class PrivacyScreen extends StatefulWidget {
 }
 
 class _PrivacyScreenState extends State<PrivacyScreen> {
+  final dio = Dio();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
   int? _password;
   int? _newPassword;
+  bool _obscureText = true;
+  bool _obscureTextPass = true;
+
   @override
   void dispose() {
     super.dispose();
     _passwordController.dispose();
     _newPasswordController.dispose();
+  }
+
+  Future<void> changePassword() async {
+    log('change password called');
+    dynamic body = {
+      "currentPassword" : _passwordController.text,
+      "newPassword" : _newPasswordController.text,
+    };
+    var response = await ApiHelper.instance.sendHttpRequest(
+        urlPath: '/api/accounts/changepassword',
+      method: Method.put,
+      body: body
+    );
   }
 
   @override
@@ -73,7 +95,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               width: 330,
               height: 51,
               child: TextField(
-                obscureText: true,
+                obscureText: _obscureText,
                 controller: _passwordController,
                 style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                 decoration: InputDecoration(
@@ -89,7 +111,22 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                         borderSide:
                             BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                     hintText: 'Хуучин Нууц Үг',
-                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      size: 20,
+                      color: Colors.lightBlueAccent,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  )
+                ),
               ),
             ),
             SizedBox(height: 30),
@@ -97,7 +134,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               width: 330,
               height: 51,
               child: TextField(
-                obscureText: true,
+                obscureText: _obscureTextPass,
                 controller: _newPasswordController,
                 style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                 decoration: InputDecoration(
@@ -113,7 +150,21 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                         borderSide:
                             BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                     hintText: 'Шинэ Нууц Үг',
-                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureTextPass
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    size: 20,
+                    color: Colors.lightBlueAccent,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureTextPass = !_obscureTextPass;
+                    });
+                  },
+                )),
               ),
             ),
             SizedBox(height: 30),
@@ -122,7 +173,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                     backgroundColor: Color(0xff007CD6),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5))),
-                onPressed: () {},
+                onPressed: () {
+                  changePassword();
+                },
                 child: Container(
                   alignment: Alignment.center,
                   width: 280,

@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
 import 'package:readingappv1/service/api_helper.dart';
 
+import 'login_screen.dart';
 import 'service/method.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -25,6 +27,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   RxBool isLoading = RxBool(false);
+  RxBool isSuccess = RxBool(true);
+  bool _obscureTextPass = true;
 
   Future<void> _selectDate(BuildContext context) async {
     DateTime selectedDate = DateTime.now();
@@ -70,16 +74,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
 
     isLoading.value = false;
+    bool isSuccess = true;
 
     log('signup response : $response');
 
-    // if (isSuccess) {
-    //   Get.to(() => const LoginScreen());
-    //
-    //   /// TODO : Succeed flashbar
-    // } else {
-    //   /// TODO : Failed flashbar
-    // }
+    if (isSuccess) {
+      Flushbar(
+        message: 'Бүртгэл амжилттай үүслээ.',
+        duration: Duration(seconds: 3),
+      )..show(context);
+      Get.to(() => const LoginScreen());
+    }
   }
 
   @override
@@ -349,25 +354,40 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(
                             height: 51,
                             child: TextField(
-                              obscureText: true,
+                              obscureText: _obscureTextPass,
                               controller: _passwordController,
                               style: const TextStyle(
                                   color: Color.fromRGBO(0, 124, 214, 0.50)),
-                              decoration: const InputDecoration(
-                                  prefixIcon: Icon(PhosphorIcons.key,
-                                      color: Color.fromRGBO(0, 124, 214, 0.50)),
-                                  border: InputBorder.none,
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      borderSide: BorderSide(
-                                          color: Colors.lightBlueAccent)),
-                                  hintText: 'Нууц Үг Үүсгэх',
-                                  hintStyle: TextStyle(
-                                      color:
-                                          Color.fromRGBO(0, 124, 214, 0.50))),
+                              decoration:  InputDecoration(
+                                prefixIcon: Icon(PhosphorIcons.key,
+                                    color: Color.fromRGBO(0, 124, 214, 0.50)),
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: Colors.white,
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    borderSide: BorderSide(
+                                        color: Colors.lightBlueAccent)),
+                                hintText: 'Нууц Үг Үүсгэх',
+                                hintStyle: TextStyle(
+                                  color: Color.fromRGBO(0, 124, 214, 0.50),
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureTextPass
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    size: 20,
+                                    color: Colors.lightBlueAccent,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureTextPass = !_obscureTextPass;
+                                    });
+                                  },
+                                )
+                              ),
                             ),
                           ),
                           const SizedBox(height: 20),

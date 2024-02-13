@@ -13,13 +13,13 @@ class StatisticScreen extends StatefulWidget {
 
 class _StatisticScreenState extends State<StatisticScreen> {
   List<double> weeklySummary = [
-    123,
-    70,
-    142,
-    36,
-    11,
-    97,
-    80,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
   ];
   List<double> daySummary = [
     75,
@@ -76,8 +76,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                        color: Color(0xffE8EFF5),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
+                      // color: const Color(0xffE8EFF5),
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -110,8 +117,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                       ),
                     ),
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                          color: Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -160,8 +173,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                          color: Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -194,8 +213,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                       ),
                     ),
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                          color: Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -230,12 +255,16 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: SizedBox(
                     height: 200,
                     width: 350,
                     child: Container(
-                        color: const Color(0xffE8EFF5),
+                        decoration: BoxDecoration(
+                            color: Color(0xffE8EFF5),
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                        ),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,
@@ -256,8 +285,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                          color: Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -290,8 +325,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                       ),
                     ),
                     Container(
-                      color: const Color(0xffE8EFF5),
+                      decoration: BoxDecoration(
+                          color: Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                      ),
+                      width: 150,
                       child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(
                             PhosphorIcons.caret_circle_up,
@@ -326,12 +367,16 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: SizedBox(
                     height: 200,
                     width: 350,
                     child: Container(
-                        color: const Color(0xffE8EFF5),
+                        decoration: BoxDecoration(
+                            color: Color(0xffE8EFF5),
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
+                        ),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,
