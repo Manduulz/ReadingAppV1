@@ -12,14 +12,15 @@ import 'package:readingappv1/navigation_bar/nav_home_screen.dart';
 import 'package:readingappv1/navigation_bar/profile_screen.dart';
 import 'package:readingappv1/navigation_bar/screen_layout.dart';
 import 'package:readingappv1/navigation_bar/statistic_screen.dart';
+import 'package:readingappv1/pages/speaking_screen/view/speaking_screen.dart';
 import 'package:readingappv1/pages/suite/reading_pages.dart';
 import 'package:readingappv1/profile_settings/change_account_screen.dart';
 import 'package:readingappv1/profile_settings/privacy_screen.dart';
 import 'package:readingappv1/service/api_helper.dart';
 import 'package:readingappv1/service/my_storage.dart';
 import 'package:readingappv1/sign_up_screen.dart';
+import 'package:readingappv1/voice/select.dart';
 import 'package:readingappv1/voice/speak.dart';
-
 
 import 'profile_settings/information_screen.dart';
 
@@ -49,7 +50,10 @@ void main() {
         // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
         GetPage(name: '/loading', page: () => const MyLoadingScreen()),
         GetPage(name: '/voice', page: () => VoiceRecorder()),
-        GetPage(name: '/voice/record', page: () => SpeakScreen()),
+        GetPage(name: '/voice/record', page: () => const SpeakScreen()),
+        GetPage(name: '/voice/select', page: () => const SelectVoiceActionScreen()),
+        GetPage(name: '/speaking', page: () => const SpeakingScreen()),
+
         ...ReadingPages.pages,
       ],
     ),

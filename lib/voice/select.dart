@@ -1,5 +1,5 @@
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
   @override
@@ -8,177 +8,173 @@ class _SelectVoiceActionScreenState extends State<SelectVoiceActionScreen> {
       appBar: AppBar(
         leadingWidth: 100,
         leading: TextButton(
-          onPressed: (){},
-          child: const Row(children: [
-            Icon(
-              PhosphorIcons.caret_left,
-              color: Colors.black,
-            ),
-            Text(
-              'Back',
-              style: TextStyle(color: Colors.black),
-            )
-          ],),
+          onPressed: () {},
+          child: const Row(
+            children: [
+              Icon(
+                PhosphorIcons.caret_left,
+                color: Colors.black,
+              ),
+              Text(
+                'Back',
+                style: TextStyle(color: Colors.black),
+              )
+            ],
+          ),
         ),
       ),
-      body: Column(children: [
-        Expanded(
-            child: InkWell(
-              onTap: (){},
-              child: Container(
-                margin: const EdgeInsets.all(20),
-                decoration: ShapeDecoration(
+      body: Column(
+        children: [
+          Expanded(
+              child: InkWell(
+            onTap: () {},
+            child: Container(
+              margin: const EdgeInsets.all(20),
+              decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1,color: Color(0xFFE2E8F0)),
+                    side: const BorderSide(width: 1, color: Color(0xFFE2E8F0)),
                     borderRadius: BorderRadius.circular(10),
-                  )
-                ),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(30),
-                  decoration: const BoxDecoration(
+                  )),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(30),
+                decoration: const BoxDecoration(
                     gradient: RadialGradient(
-                      center: Alignment(1,1),
-                      radius: 1,
-                      colors: [Color(0xFFFEE2E2), Color(0x00FEE2E2)],
-                    )
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Speak',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                            ),
+                  center: Alignment(1, 1),
+                  radius: 1,
+                  colors: [Color(0xFFFEE2E2), Color(0x00FEE2E2)],
+                )),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Speak',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
                           ),
-                          Text(
-                            'Donate your voice',
-                            style: TextStyle(
-                              color: Colors.black12,
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: ShapeDecoration(
+                        ),
+                        Text(
+                          'Donate your voice',
+                          style: TextStyle(
+                            color: Colors.black12,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: ShapeDecoration(
                               color: const Color(0xFFEF4444),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(35),
                               ),
-                              shadows: [
-                                const BoxShadow(
+                              shadows: const [
+                                BoxShadow(
                                   color: Color(0x7FEF4444),
                                   blurRadius: 20,
                                   offset: Offset(0, 0),
                                   spreadRadius: 0,
                                 )
-                              ]
-                            ),
-                            child: const Icon(
-                              PhosphorIcons.microphone,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                              ]),
+                          child: const Icon(
+                            PhosphorIcons.microphone,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
-            )
-        ),
-        Expanded(
-            child: InkWell(
-              onTap: (){},
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, bottom: 20,right: 20),
-                decoration: ShapeDecoration(
+            ),
+          )),
+          Expanded(
+              child: InkWell(
+            onTap: () {},
+            child: Container(
+              margin: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+              decoration: ShapeDecoration(
                   color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(width: 1, color: Color(0xFFE2E9F0)),
-                      borderRadius: BorderRadius.circular(10),
-                    )
-                ),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(30),
-                  decoration: const BoxDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFFE2E9F0)),
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(30),
+                decoration: const BoxDecoration(
                     gradient: RadialGradient(
-                      center: Alignment(1,1),
-                        radius: 1,
-                        colors: [Color(0xFFDCFCE7), Color(0x00DCFCE7)],
-                    )
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Listen',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w700,
-                            ),
+                  center: Alignment(1, 1),
+                  radius: 1,
+                  colors: [Color(0xFFDCFCE7), Color(0x00DCFCE7)],
+                )),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Listen',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
                           ),
-                          Text(
-                            'Help us validate voices',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: ShapeDecoration(
+                        ),
+                        Text(
+                          'Help us validate voices',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: ShapeDecoration(
                               color: const Color(0xFF22C55E),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(35),
                               ),
-                              shadows: [
-                                const BoxShadow(
+                              shadows: const [
+                                BoxShadow(
                                   color: Color(0x7F22C55E),
                                   blurRadius: 20,
                                   offset: Offset(0, 0),
                                   spreadRadius: 0,
                                 )
-                              ]
-                            ),
-                            child: const Icon(
-                              PhosphorIcons.headphones,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                              ]),
+                          child: const Icon(
+                            PhosphorIcons.headphones,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
-            )
-        )
-      ],),
+            ),
+          ))
+        ],
+      ),
     );
   }
 }

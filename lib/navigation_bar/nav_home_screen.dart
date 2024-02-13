@@ -58,6 +58,19 @@ class _navHomeScreenState extends State<navHomeScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                InkWell(
+                  onTap: () {
+                    Get.toNamed('/speaking');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    height: 50,
+                    width: 50,
+                    color: Colors.amber,
+                  ),
+                ),
+
                 /// Banners
                 SizedBox(
                   height: 200,
