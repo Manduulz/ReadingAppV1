@@ -1,21 +1,63 @@
 import 'dart:async';
+import 'package:flutter_sound/flutter_sound.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:readingappv1/pages/speaking_screen/state/speaking_state.dart';
 import 'package:readingappv1/pages/state/reading_state.dart';
 
 class ReadingController extends GetxController {
   ReadingState state = ReadingState();
   Timer? timer;
+  SpeakingState speakingState = SpeakingState();
 
   @override
   void onInit() {
     once(state.isDone, (isDone) {
       setContentText();
     });
-
+    initializer();
     super.onInit();
   }
+
+  void initializer() async {
+    await speakingState.recordingSession.openRecorder();
+    await speakingState.myPlayer.openPlayer();
+  }
+
+  Future<void> record() async {
+    await Permission.microphone.request();
+
+    final directory = await getApplicationDocumentsDirectory();
+
+    String pathToAudio = '/${directory.path}/temp.aac';
+
+    speakingState.path = pathToAudio;
+
+    await speakingState.recordingSession.startRecorder(
+      toFile: pathToAudio,
+      codec: Codec.aacADTS,
+    );
+  }
+
+  void play() async {
+    await speakingState.myPlayer.startPlayer(
+      fromURI: speakingState.path,
+      codec: Codec.aacADTS
+    );
+  }
+
+  void stopplayer() {
+    speakingState.myPlayer.stopPlayer();
+  }
+
+  Future<void> stopRecorder() async {
+    await speakingState.recordingSession.stopRecorder();
+  }
+
+
 
   List<TextSpan> setContentText() {
     for (var index = 0;
@@ -79,5 +121,11 @@ class ReadingController extends GetxController {
   void onClose() {
     timer?.cancel();
     super.onClose();
+  }
+  @override
+  void dispose() {
+    speakingState.myPlayer.closePlayer();
+    speakingState.recordingSession.closeRecorder();
+    super.dispose();
   }
 }

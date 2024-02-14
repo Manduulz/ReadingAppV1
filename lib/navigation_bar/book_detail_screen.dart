@@ -26,11 +26,12 @@ class BookDetailScreen extends StatelessWidget {
     isLoading.value = false;
 
     log('book detail response : $response');
-
     if (isSuccess) {
       bookDetail.value = response;
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,9 +80,10 @@ class BookDetailScreen extends StatelessWidget {
                             boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))],
                           ),
                           alignment: Alignment.center,
-                          child: const SizedBox(
+                          child: SizedBox(
                             width: 200,
                             height: 250,
+                            child: Image.asset('assets/images/kidBook.jpeg'),
                           ),
                         ),
                         const SizedBox(height: 28),
@@ -226,12 +228,6 @@ class BookDetailScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    PhosphorIcons.play,
-                                    size: 18,
-                                    color: Colors.white,
-                                  ),
-                                  Padding(padding: EdgeInsets.only(left: 10)),
                                   Text(
                                     textAlign: TextAlign.center,
                                     'Эхлүүлэх',

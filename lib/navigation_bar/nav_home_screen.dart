@@ -73,7 +73,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
 
                 /// Banners
                 SizedBox(
-                  height: 200,
+                  height: 140,
                   child: PageView.builder(
                     controller: pageController,
                     onPageChanged: (index) {
@@ -93,7 +93,7 @@ class _navHomeScreenState extends State<navHomeScreen> {
                                 LinearGradient(colors: [Color(0xff007CD6), Color(0xff272E6A)], begin: Alignment.topLeft, end: Alignment.bottomRight),
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          child: const SizedBox(height: 180),
+                          child: SizedBox(height: 180, child: Image.asset('assets/images/books.jpg'),),
                         ),
                       );
                     },
@@ -102,7 +102,6 @@ class _navHomeScreenState extends State<navHomeScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                /// Dots
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(

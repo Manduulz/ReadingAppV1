@@ -25,7 +25,7 @@ class BookItem extends StatelessWidget {
           children: [
             /// TODO : CachedNetworkImage
             Container(
-              color: Colors.amber,
+              child: Image.asset('assets/images/book.jpg'),
               height: 100,
             ),
             Padding(

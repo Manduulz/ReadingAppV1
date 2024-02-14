@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:readingappv1/pages/logic/reading_controller.dart';
 
 import '../../reading_screens/reading_screen_settings.dart';
 
-///TODO: change statefull to stateless
-///TODO : stateless dotor icon change button nemj chadahgui bna :)),
 class ReadingScreen extends StatefulWidget {
   const ReadingScreen({Key? key}) : super(key: key);
 
@@ -25,6 +24,9 @@ class _ReadingScreenState extends State<ReadingScreen> {
           controller.state.bookData.value = Get.arguments;
 
           controller.state.isDone.value = true;
+
+
+
 
           // for (var index = 0; index < controller.state.bookData['contentText'].split(' ').length; index++) {
           //   controller.state.content.add(controller.state.bookData['contentText'][index]);
@@ -169,10 +171,12 @@ class _ReadingScreenState extends State<ReadingScreen> {
                                 setState(() {
                                   isPlaying = !isPlaying;
                                 });
+                                controller.speakingState.isPlaying.value ? controller.stopRecorder() : controller.record();
+                                controller.speakingState.isPlaying.value = !controller.speakingState.isPlaying.value;
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: isPlaying ? Colors.red : Colors.blue,
                                     borderRadius: BorderRadius.circular(55)),
                                 height: 50,
                                 width: 50,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:readingappv1/pages/speaking_screen/logic/speaking_controller.dart';
 
 class SpeakingScreen extends StatelessWidget {
