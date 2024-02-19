@@ -577,7 +577,7 @@ class IdiomScreen extends StatefulWidget {
 }
 
 class _IdiomScreenState extends State<IdiomScreen> {
-  int _page = 0;
+  final int _page = 0;
   late PageController bookPageController;
 
   @override
@@ -608,13 +608,13 @@ class _IdiomScreenState extends State<IdiomScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_rounded,
             color: Colors.black,
             size: 32,
           ),
         ),
-        title: Column(
+        title: const Column(
           children: [
             Text(
               'Хайлт',
@@ -631,9 +631,9 @@ class _IdiomScreenState extends State<IdiomScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SearchField(),
-              Padding(
-                padding: const EdgeInsets.only(left: 30.0, top: 24),
+              const SearchField(),
+              const Padding(
+                padding: EdgeInsets.only(left: 30.0, top: 24),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -659,7 +659,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Бүгд',
@@ -678,7 +678,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         width: 99,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Хадгалсан үг',
@@ -697,7 +697,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         width: 39,
                         height: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(2))),
                         child: Text(
                           'Архив',
@@ -713,7 +713,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.only(top: 20)),
+              const Padding(padding: EdgeInsets.only(top: 20)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -722,7 +722,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
@@ -739,21 +739,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -768,8 +767,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -792,7 +790,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
@@ -806,21 +804,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -835,8 +832,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -858,7 +854,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(top: 20)),
+              const Padding(padding: EdgeInsets.only(top: 20)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -867,7 +863,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
@@ -881,21 +877,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -910,8 +905,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -934,7 +928,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
@@ -948,21 +942,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -977,8 +970,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -1000,7 +992,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   ),
                 ],
               ),
-              Padding(padding: EdgeInsets.only(top: 20)),
+              const Padding(padding: EdgeInsets.only(top: 20)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -1009,7 +1001,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
@@ -1023,21 +1015,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -1052,8 +1043,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -1076,7 +1066,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                   MaterialButton(
                     onPressed: () {},
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           boxShadow: [
@@ -1090,21 +1080,20 @@ class _IdiomScreenState extends State<IdiomScreen> {
                         height: 201,
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 10)),
+                            const Padding(padding: EdgeInsets.only(top: 10)),
                             Container(
                               width: 135,
                               height: 116,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xffE8EFF5),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
                             ),
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 16.0, left: 10),
+                                  padding: EdgeInsets.only(top: 16.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(
@@ -1119,8 +1108,7 @@ class _IdiomScreenState extends State<IdiomScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 4.0, left: 10),
+                                  padding: EdgeInsets.only(top: 4.0, left: 10),
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Text(

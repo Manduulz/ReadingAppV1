@@ -6,7 +6,7 @@ class MyLoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: MyPage(),
     );
   }
@@ -24,9 +24,9 @@ class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffF8FAFC),
+        backgroundColor: const Color(0xffF8FAFC),
         body: isLoading
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                   color: Color(0xff007CD6),
                   backgroundColor: Colors.blueGrey,
@@ -35,13 +35,13 @@ class _MyPageState extends State<MyPage> {
                   strokeWidth: 5,
                 ),
               )
-            : ScreenLayout());
+            : const ScreenLayout());
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
       });

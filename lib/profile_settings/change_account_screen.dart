@@ -13,7 +13,7 @@ class _ManageAccountsState extends State<ChangeAccounts> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xffE8EFF5),
+        backgroundColor: const Color(0xffE8EFF5),
         centerTitle: true,
 
         // bottom: PreferredSize(
@@ -24,12 +24,12 @@ class _ManageAccountsState extends State<ChangeAccounts> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xff34333080),
+            color: Color(0xff343330),
           ),
         ),
-        title: Text(
+        title: const Text(
           'Бүртгэл солих',
           style: TextStyle(
               fontFamily: 'InterTight',

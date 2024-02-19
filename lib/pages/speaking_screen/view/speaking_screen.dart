@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:readingappv1/pages/speaking_screen/logic/speaking_controller.dart';
 
 class SpeakingScreen extends StatelessWidget {
@@ -22,13 +21,19 @@ class SpeakingScreen extends StatelessWidget {
                 Center(
                   child: InkWell(
                     onTap: () {
-                      controller.state.isPlaying.value ? controller.stopRecorder() : controller.record();
-                      controller.state.isPlaying.value = !controller.state.isPlaying.value;
+                      controller.state.isPlaying.value
+                          ? controller.stopRecorder()
+                          : controller.record();
+                      controller.state.isPlaying.value =
+                          !controller.state.isPlaying.value;
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 14, horizontal: 10),
                       decoration: BoxDecoration(
-                        color: controller.state.isPlaying.value ? Colors.red : Colors.green,
+                        color: controller.state.isPlaying.value
+                            ? Colors.red
+                            : Colors.green,
                         shape: BoxShape.circle,
                       ),
                       child: Text(

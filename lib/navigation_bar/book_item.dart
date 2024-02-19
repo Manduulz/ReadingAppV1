@@ -24,9 +24,9 @@ class BookItem extends StatelessWidget {
         child: Column(
           children: [
             /// TODO : CachedNetworkImage
-            Container(
-              child: Image.asset('assets/images/book.jpg'),
+            SizedBox(
               height: 100,
+              child: Image.asset('assets/images/book.jpg'),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0, left: 10),

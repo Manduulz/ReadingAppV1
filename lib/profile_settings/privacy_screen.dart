@@ -17,8 +17,6 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   final dio = Dio();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  int? _password;
-  int? _newPassword;
   bool _obscureText = true;
   bool _obscureTextPass = true;
 
@@ -32,14 +30,13 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   Future<void> changePassword() async {
     log('change password called');
     dynamic body = {
-      "currentPassword" : _passwordController.text,
-      "newPassword" : _newPasswordController.text,
+      "currentPassword": _passwordController.text,
+      "newPassword": _newPasswordController.text,
     };
     var response = await ApiHelper.instance.sendHttpRequest(
         urlPath: '/api/accounts/changepassword',
-      method: Method.put,
-      body: body
-    );
+        method: Method.put,
+        body: body);
   }
 
   @override
@@ -47,7 +44,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Color(0xffE8EFF5),
+        backgroundColor: const Color(0xffE8EFF5),
         centerTitle: true,
 
         // bottom: PreferredSize(
@@ -58,12 +55,12 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xff34333080),
+            color: Color(0xff343330),
           ),
         ),
-        title: Text(
+        title: const Text(
           'Нууцлал',
           style: TextStyle(
               fontFamily: 'InterTight',
@@ -76,8 +73,8 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 32, bottom: 30),
+            const Padding(
+              padding: EdgeInsets.only(top: 20, left: 32, bottom: 30),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -97,80 +94,81 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               child: TextField(
                 obscureText: _obscureText,
                 controller: _passwordController,
-                style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                style:
+                    const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                 decoration: InputDecoration(
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       PhosphorIcons.lock_simple,
                       color: Color.fromRGBO(0, 0, 0, 0.50),
                     ),
                     border: InputBorder.none,
                     filled: true,
-                    fillColor: Color(0xffE2E8F0),
-                    enabledBorder: OutlineInputBorder(
+                    fillColor: const Color(0xffE2E8F0),
+                    enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide:
                             BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                     hintText: 'Хуучин Нууц Үг',
-                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      size: 20,
-                      color: Colors.lightBlueAccent,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                  )
-                ),
+                    hintStyle:
+                        const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        size: 20,
+                        color: Colors.lightBlueAccent,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    )),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             SizedBox(
               width: 330,
               height: 51,
               child: TextField(
                 obscureText: _obscureTextPass,
                 controller: _newPasswordController,
-                style: TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                style:
+                    const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                 decoration: InputDecoration(
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       PhosphorIcons.lock_simple,
                       color: Color.fromRGBO(0, 0, 0, 0.50),
                     ),
                     border: InputBorder.none,
                     filled: true,
-                    fillColor: Color(0xffE2E8F0),
-                    enabledBorder: OutlineInputBorder(
+                    fillColor: const Color(0xffE2E8F0),
+                    enabledBorder: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide:
                             BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                     hintText: 'Шинэ Нууц Үг',
-                    hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscureTextPass
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    size: 20,
-                    color: Colors.lightBlueAccent,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscureTextPass = !_obscureTextPass;
-                    });
-                  },
-                )),
+                    hintStyle:
+                        const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50)),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureTextPass
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        size: 20,
+                        color: Colors.lightBlueAccent,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureTextPass = !_obscureTextPass;
+                        });
+                      },
+                    )),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff007CD6),
+                    backgroundColor: const Color(0xff007CD6),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5))),
                 onPressed: () {
@@ -182,7 +180,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                   height: 50,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(2)),
-                  child: Text(
+                  child: const Text(
                     textAlign: TextAlign.center,
                     'Хадгалах',
                     style: TextStyle(

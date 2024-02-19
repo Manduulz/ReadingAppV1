@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 const _refreshKey = "refresh_token";
 const _firstNameKey = "first_name";
 const _lastNameKey = "last_name";
-const _accountIdKey = "account_id";
+// const _accountIdKey = "account_id";
 
 class AccountPersistance {
   final _secureStorage = const FlutterSecureStorage();

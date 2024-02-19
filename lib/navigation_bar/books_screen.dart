@@ -15,7 +15,7 @@ class BooksScreen extends StatefulWidget {
 }
 
 class _BooksScreenState extends State<BooksScreen> {
-  int _page = 0;
+  final int _page = 0;
   late PageController bookPageController;
   RxList<dynamic> books = RxList([]);
   RxBool isLoading = true.obs;
@@ -176,8 +176,9 @@ class _BooksScreenState extends State<BooksScreen> {
               ),
               const SizedBox(height: 20),
               Obx(() {
-                if (isLoading.value)
+                if (isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
+                }
                 return books.isEmpty
                     ? const EmptyWidget()
                     : SizedBox(

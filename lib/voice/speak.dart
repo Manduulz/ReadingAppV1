@@ -116,7 +116,10 @@ class _SpeakScreenState extends State<SpeakScreen> {
           children: [
             Text(
               "Today's Progress",
-              style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400),
             ),
             Text.rich(TextSpan(children: [
               TextSpan(
@@ -178,8 +181,8 @@ class _SpeakScreenState extends State<SpeakScreen> {
             clipBehavior: Clip.antiAlias,
             decoration: ShapeDecoration(
                 color: Colors.white,
-                shadows: [
-                  const BoxShadow(
+                shadows: const [
+                  BoxShadow(
                     color: Color(0x3FCBD5E1),
                     blurRadius: 10,
                     offset: Offset(0, 4),
@@ -204,7 +207,9 @@ class _SpeakScreenState extends State<SpeakScreen> {
             ),
           )),
           const SizedBox(height: 30),
-          audioFile != null ? const Text('Successfully recorded!') : Container(),
+          audioFile != null
+              ? const Text('Successfully recorded!')
+              : Container(),
           audioFile != null
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,

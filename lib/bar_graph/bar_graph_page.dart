@@ -32,7 +32,7 @@ class _BarGraphBoxState extends State<BarGraphBox> {
     return Scaffold(
       body: Container(
         height: 500,
-        color: Color(0xffE8EFF5),
+        color: const Color(0xffE8EFF5),
         child: SizedBox(
           height: 500,
           child: MyBarGraph(

@@ -5,10 +5,9 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:readingappv1/classes/play_stop.dart';
 import 'package:readingappv1/reading_screens/reading_screen_settings.dart';
 
-
 class ReadingScreen extends StatefulWidget {
   final dynamic data;
-  ReadingScreen({super.key, required this.data});
+  const ReadingScreen({super.key, required this.data});
 
   @override
   State<ReadingScreen> createState() => _ReadingScreenState();
@@ -30,18 +29,20 @@ class _ReadingScreenState extends State<ReadingScreen> {
           },
           icon: const Icon(
             PhosphorIcons.arrow_left,
-            color: Color(0xff34333080),
+            color: Color(0xff343330),
             size: 35,
           ),
         ),
         actions: [
           IconButton(
               onPressed: () {
-                readingShowBottomSheet(context);
+                readingShowBottomSheet(context, () {
+                  setState(() {});
+                });
               },
               icon: const Icon(
                 PhosphorIcons.gear,
-                color: Color(0xff34333080),
+                color: Color(0xff343330),
                 size: 35,
               ))
         ],
@@ -54,8 +55,12 @@ class _ReadingScreenState extends State<ReadingScreen> {
               alignment: Alignment.topCenter,
               child: Text(
                 'Үйл явц',
-                style:
-                    TextStyle(fontStyle: FontStyle.normal, fontSize: 18, fontWeight: FontWeight.w400, fontFamily: 'InterTight', color: Colors.black),
+                style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'InterTight',
+                    color: Colors.black),
               ),
             ),
             Container(
@@ -142,7 +147,9 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(55)),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(55)),
                     child: const PlayStopButton(),
                   )
                 ],

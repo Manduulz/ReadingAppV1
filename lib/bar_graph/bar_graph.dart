@@ -41,9 +41,9 @@ class _MyBarGraphState extends State<MyBarGraph> {
       BarChartData(
         maxY: 150,
         minY: 0,
-        gridData: FlGridData(show: false),
+        gridData: const FlGridData(show: false),
         borderData: FlBorderData(show: false),
-        titlesData: FlTitlesData(
+        titlesData: const FlTitlesData(
             leftTitles: AxisTitles(
                 sideTitles: SideTitles(
               showTitles: false,
@@ -84,32 +84,32 @@ Widget getBottomTitles(double value, TitleMeta meta) {
   Widget text;
   switch (value.toInt()) {
     case 1:
-      text = Text('Да', style: style);
+      text = const Text('Да', style: style);
       break;
     case 2:
-      text = Text('Мя', style: style);
+      text = const Text('Мя', style: style);
       break;
     case 3:
-      text = Text('Лх', style: style);
+      text = const Text('Лх', style: style);
       break;
     case 4:
-      text = Text('Пү', style: style);
+      text = const Text('Пү', style: style);
       break;
     case 5:
-      text = Text('Ба', style: style);
+      text = const Text('Ба', style: style);
       break;
     case 6:
-      text = Text('Бя', style: style);
+      text = const Text('Бя', style: style);
       break;
     case 7:
-      text = Text('Ня', style: style);
+      text = const Text('Ня', style: style);
       break;
 
     default:
-      text = Text('', style: style);
+      text = const Text('', style: style);
   }
   return SideTitleWidget(
-    child: text,
     axisSide: meta.axisSide,
+    child: text,
   );
 }

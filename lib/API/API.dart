@@ -9,7 +9,8 @@ class LoginRepository {
 
   final _accountPersistance = AccountPersistance();
 
-  Future<BaseResponse<LoginResponse>> authenticate({required String username, required String password}) async {
+  Future<BaseResponse<LoginResponse>> authenticate(
+      {required String username, required String password}) async {
     try {
       Response response = await apiProvider.tokenDio.post("/api/connect/token",
           data: {
@@ -31,7 +32,8 @@ class LoginRepository {
       final lastName = response.data['lastName'];
       final accountId = response.data['accountId'];
       final roles = response.data['roles'];
-      apiProvider.setRefreshToken(refreshToken: refreshToken, token: accessToken);
+      apiProvider.setRefreshToken(
+          refreshToken: refreshToken, token: accessToken);
       _accountPersistance.setRefreshToken(refreshToken);
       _accountPersistance.setFirstName(firstName);
       _accountPersistance.setLastName(lastName);
@@ -43,7 +45,8 @@ class LoginRepository {
       if (error is DioException) {
         return ErrorResponse.fromDioError(error);
       }
-      return const ErrorResponse(message: 'looks like something has gone wrong! please try again');
+      return const ErrorResponse(
+          message: 'looks like something has gone wrong! please try again');
     }
   }
 
@@ -63,7 +66,8 @@ class LoginRepository {
 
   Future<bool> forgotPassword(String email) async {
     try {
-      await apiProvider.tokenDio.post("/api/authorization/password/forgot", data: {'email': Uri.encodeComponent(email)});
+      await apiProvider.tokenDio.post("/api/authorization/password/forgot",
+          data: {'email': Uri.encodeComponent(email)});
       return true;
     } on DioException {
       return false;

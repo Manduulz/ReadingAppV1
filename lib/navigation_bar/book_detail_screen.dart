@@ -8,19 +8,25 @@ import 'package:readingappv1/service/api_helper.dart';
 
 import '../service/method.dart';
 
-class BookDetailScreen extends StatelessWidget {
+class BookDetailScreen extends StatefulWidget {
   final String bookId;
 
-  BookDetailScreen({required this.bookId, super.key});
+  const BookDetailScreen({required this.bookId, super.key});
 
+  @override
+  State<BookDetailScreen> createState() => _BookDetailScreenState();
+}
+
+class _BookDetailScreenState extends State<BookDetailScreen> {
   RxMap<String, dynamic> bookDetail = RxMap({});
+
   RxBool isLoading = true.obs;
 
   Future<void> getBookDetail() async {
     isLoading.value = true;
 
     var (isSuccess, response) = await ApiHelper.instance.sendHttpRequest(
-      urlPath: '/api/content/$bookId',
+      urlPath: '/api/content/${widget.bookId}',
       method: Method.get,
     );
     isLoading.value = false;
@@ -31,13 +37,16 @@ class BookDetailScreen extends StatelessWidget {
     }
   }
 
-
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      getBookDetail();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    /// TODO : remove it from build
-    getBookDetail();
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -53,7 +62,7 @@ class BookDetailScreen extends StatelessWidget {
             size: 32,
           ),
         ),
-        actions: [const CenterRightActionButton()],
+        actions: const [CenterRightActionButton()],
       ),
       body: Obx(() {
         return SafeArea(
@@ -77,7 +86,12 @@ class BookDetailScreen extends StatelessWidget {
                             borderRadius: BorderRadius.all(
                               Radius.circular(15),
                             ),
-                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 15,
+                                  offset: Offset(2, 4))
+                            ],
                           ),
                           alignment: Alignment.center,
                           child: SizedBox(
@@ -101,7 +115,7 @@ class BookDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'progressPCT : ${bookDetail['progressPCT']} , id : ${bookDetail['id']}' ?? '',
+                          'progressPCT : ${bookDetail['progressPCT']} , id : ${bookDetail['id']}',
                           style: const TextStyle(
                             fontFamily: 'InterTight',
                             fontStyle: FontStyle.normal,
@@ -209,21 +223,25 @@ class BookDetailScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 28),
-                        Text('${bookDetail['contentText']}' ?? ''),
+                        Text('${bookDetail['contentText'] ?? ""}'),
                         const SizedBox(height: 10),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromRGBO(0, 124, 214, 0.50),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                                backgroundColor:
+                                    const Color.fromRGBO(0, 124, 214, 0.50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5))),
                             onPressed: () {
-                              Get.toNamed('/reading_screen', arguments: bookDetail);
+                              Get.toNamed('/reading_screen',
+                                  arguments: bookDetail);
                               // Get.toNamed('/voice');
                             },
                             child: Container(
                               alignment: Alignment.center,
                               width: 280,
                               height: 50,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2)),
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -77,10 +77,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xffE8EFF5),
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          color: const Color(0xffE8EFF5),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       // color: const Color(0xffE8EFF5),
                       child: const Row(
@@ -118,10 +122,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xffE8EFF5),
+                          color: const Color(0xffE8EFF5),
                           borderRadius: BorderRadius.circular(5),
-                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -174,10 +182,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xffE8EFF5),
+                          color: const Color(0xffE8EFF5),
                           borderRadius: BorderRadius.circular(5),
-                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -214,10 +226,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xffE8EFF5),
+                          color: const Color(0xffE8EFF5),
                           borderRadius: BorderRadius.circular(5),
-                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -261,10 +277,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     width: 350,
                     child: Container(
                         decoration: BoxDecoration(
-                            color: Color(0xffE8EFF5),
+                            color: const Color(0xffE8EFF5),
                             borderRadius: BorderRadius.circular(5),
-                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                        ),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 15,
+                                  offset: Offset(2, 4))
+                            ]),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,
@@ -286,10 +306,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xffE8EFF5),
+                          color: const Color(0xffE8EFF5),
                           borderRadius: BorderRadius.circular(5),
-                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -326,10 +350,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Color(0xffE8EFF5),
+                          color: const Color(0xffE8EFF5),
                           borderRadius: BorderRadius.circular(5),
-                          boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                      ),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 15,
+                                offset: Offset(2, 4))
+                          ]),
                       width: 150,
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -373,10 +401,14 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     width: 350,
                     child: Container(
                         decoration: BoxDecoration(
-                            color: Color(0xffE8EFF5),
+                            color: const Color(0xffE8EFF5),
                             borderRadius: BorderRadius.circular(5),
-                            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 15, offset: Offset(2, 4))]
-                        ),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 15,
+                                  offset: Offset(2, 4))
+                            ]),
                         child: MyBarGraph(
                           weeklySummary: weeklySummary,
                           daySummary: daySummary,

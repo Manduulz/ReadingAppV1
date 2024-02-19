@@ -114,92 +114,90 @@ class _ScreenLayoutState extends State<ScreenLayout> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: PageView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           onPageChanged: onPageChanged,
-          children: [
-            navHomeScreen(),
+          children: const [
+            NavHomeScreen(),
             StatisticScreen(),
             ProfileScreen(),
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        child: CupertinoTabBar(
-          backgroundColor: Color(0xffE8EFF5),
-          onTap: navigationTapped,
-          items: [
-            BottomNavigationBarItem(
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    PhosphorIcons.house,
-                    color: _page == 0 ? Color(0xff007CD6) : Colors.white,
-                    size: 32,
+      bottomNavigationBar: CupertinoTabBar(
+        backgroundColor: const Color(0xffE8EFF5),
+        onTap: navigationTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  PhosphorIcons.house,
+                  color: _page == 0 ? const Color(0xff007CD6) : Colors.grey,
+                  size: 32,
+                ),
+                Text(
+                  'Нүүр',
+                  style: TextStyle(
+                    fontFamily: 'InterTight',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 10,
+                    color: _page == 0 ? const Color(0xff007CD6) : Colors.grey,
                   ),
-                  Text(
-                    'Нүүр',
-                    style: TextStyle(
-                      fontFamily: 'InterTight',
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 10,
-                      color: _page == 0 ? Color(0xff007CD6) : Colors.white,
-                    ),
-                  )
-                ],
-              ),
-              // backgroundColor: Colors.white,
+                )
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    PhosphorIcons.chart_bar,
-                    color: _page == 1 ? Color(0xff007CD6) : Colors.white,
-                    size: 32,
+            // backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  PhosphorIcons.chart_bar,
+                  color: _page == 1 ? const Color(0xff007CD6) : Colors.grey,
+                  size: 32,
+                ),
+                Text(
+                  'Статистик',
+                  style: TextStyle(
+                    fontFamily: 'InterTight',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 10,
+                    color: _page == 1 ? const Color(0xff007CD6) : Colors.grey,
                   ),
-                  Text(
-                    'Статистик',
-                    style: TextStyle(
-                      fontFamily: 'InterTight',
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 10,
-                      color: _page == 1 ? Color(0xff007CD6) : Colors.white,
-                    ),
-                  )
-                ],
-              ),
-              backgroundColor: Colors.white,
+                )
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    PhosphorIcons.user_circle,
-                    color: _page == 2 ? Color(0xff007CD6) : Colors.white,
-                    size: 32,
+            backgroundColor: Colors.white,
+          ),
+          BottomNavigationBarItem(
+            icon: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  PhosphorIcons.user_circle,
+                  color: _page == 2 ? const Color(0xff007CD6) : Colors.grey,
+                  size: 32,
+                ),
+                Text(
+                  'Хэрэглэгч',
+                  style: TextStyle(
+                    fontFamily: 'InterTight',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 10,
+                    color: _page == 2 ? const Color(0xff007CD6) : Colors.grey,
                   ),
-                  Text(
-                    'Хэрэглэгч',
-                    style: TextStyle(
-                      fontFamily: 'InterTight',
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 10,
-                      color: _page == 2 ? Color(0xff007CD6) : Colors.white,
-                    ),
-                  )
-                ],
-              ),
-              backgroundColor: Colors.white,
+                )
+              ],
             ),
-          ],
-        ),
+            backgroundColor: Colors.white,
+          ),
+        ],
       ),
     );
   }

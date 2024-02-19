@@ -98,7 +98,11 @@ class _PrivacyScreenState extends State<InformationScreen> {
         title: const Text(
           'Бүртгэл',
           style: TextStyle(
-              fontFamily: 'InterTight', fontWeight: FontWeight.w600, fontSize: 24, fontStyle: FontStyle.normal, color: Color.fromRGBO(0, 0, 0, 0.50)),
+              fontFamily: 'InterTight',
+              fontWeight: FontWeight.w600,
+              fontSize: 24,
+              fontStyle: FontStyle.normal,
+              color: Color.fromRGBO(0, 0, 0, 0.50)),
         ),
       ),
       body: SafeArea(
@@ -125,7 +129,8 @@ class _PrivacyScreenState extends State<InformationScreen> {
                 height: 51,
                 child: TextField(
                   controller: _firstNameController,
-                  style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                  style:
+                      const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         PhosphorIcons.user_circle,
@@ -135,9 +140,12 @@ class _PrivacyScreenState extends State<InformationScreen> {
                       filled: true,
                       fillColor: const Color(0xffE2E8F0),
                       enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)), borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                       hintText: controller.userData['firstName'] ?? 'Овог',
-                      hintStyle: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                      hintStyle: const TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.50))),
                 ),
               ),
               const SizedBox(height: 30),
@@ -168,7 +176,8 @@ class _PrivacyScreenState extends State<InformationScreen> {
                 height: 51,
                 child: TextField(
                   controller: _lastNameController,
-                  style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                  style:
+                      const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
                       prefixIcon: const Icon(
                         PhosphorIcons.user_circle,
@@ -178,9 +187,12 @@ class _PrivacyScreenState extends State<InformationScreen> {
                       filled: true,
                       fillColor: const Color(0xffE2E8F0),
                       enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)), borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                       hintText: controller.userData['lastName'] ?? 'Нэр',
-                      hintStyle: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                      hintStyle: const TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.50))),
                 ),
               ),
               const SizedBox(height: 30),
@@ -189,16 +201,21 @@ class _PrivacyScreenState extends State<InformationScreen> {
                 height: 51,
                 child: TextField(
                   controller: _emailController,
-                  style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                  style:
+                      const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
-                      prefixIcon: const Icon(PhosphorIcons.envelope, color: Color.fromRGBO(0, 0, 0, 0.50)),
+                      prefixIcon: const Icon(PhosphorIcons.envelope,
+                          color: Color.fromRGBO(0, 0, 0, 0.50)),
                       border: InputBorder.none,
                       filled: true,
                       fillColor: const Color(0xffE2E8F0),
                       enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)), borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                       hintText: controller.userData['email'] ?? 'И-Мейл',
-                      hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                      hintStyle: const TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.50))),
                 ),
               ),
               const SizedBox(height: 30),
@@ -208,22 +225,29 @@ class _PrivacyScreenState extends State<InformationScreen> {
                 child: TextField(
                   controller: _phoneNumberController,
                   keyboardType: TextInputType.phone,
-                  style: const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
+                  style:
+                      const TextStyle(color: Color.fromRGBO(0, 124, 214, 0.50)),
                   decoration: InputDecoration(
-                      prefixIcon: Icon(PhosphorIcons.phone, color: Color.fromRGBO(0, 0, 0, 0.50)),
+                      prefixIcon: const Icon(PhosphorIcons.phone,
+                          color: Color.fromRGBO(0, 0, 0, 0.50)),
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0xffE2E8F0),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)), borderSide: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                      fillColor: const Color(0xffE2E8F0),
+                      enabledBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(0, 0, 0, 0.50))),
                       hintText: controller.userData['phone'] ?? 'Утас',
-                      hintStyle: TextStyle(color: Color.fromRGBO(0, 0, 0, 0.50))),
+                      hintStyle: const TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.50))),
                 ),
               ),
               const SizedBox(height: 30),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff007CD6), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                      backgroundColor: const Color(0xff007CD6),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
                   onPressed: () {
                     updateAccount();
                   },
@@ -231,7 +255,8 @@ class _PrivacyScreenState extends State<InformationScreen> {
                     alignment: Alignment.center,
                     width: 280,
                     height: 50,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(2)),
                     child: const Text(
                       textAlign: TextAlign.center,
                       'Хадгалах',

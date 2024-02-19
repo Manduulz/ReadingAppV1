@@ -39,10 +39,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Obx(() {
       return Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: isLoading.value
-                ? const Center(child: CircularProgressIndicator())
-                : Column(
+          child: isLoading.value
+              ? const Center(child: CircularProgressIndicator())
+              : SingleChildScrollView(
+                  child: Column(
                     children: [
                       SizedBox(
                         width: 390,
@@ -173,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -194,10 +194,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   Get.toNamed('/changeacc');
                                 },
                                 child: Padding(
-                                  padding: EdgeInsets.only(right: 25.0),
+                                  padding: const EdgeInsets.only(right: 25.0),
                                   child: Text(
                                     '${controller.userData['firstName'].substring(0, 1)}.${controller.userData['lastName']}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                         fontStyle: FontStyle.normal,
@@ -248,7 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       )
                     ],
                   ),
-          ),
+                ),
         ),
       );
     });

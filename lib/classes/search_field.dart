@@ -9,17 +9,17 @@ class SearchField extends StatefulWidget {
 }
 
 class _SearchFieldState extends State<SearchField> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 25.0, left: 25),
       child: Container(
         height: 34,
-        color: Color(0xffE8EFF5),
+        color: const Color(0xffE8EFF5),
         child: TextField(
           controller: _controller,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
               labelText: 'Ном хайх',
               labelStyle: TextStyle(
                   fontSize: 14,
@@ -35,7 +35,7 @@ class _SearchFieldState extends State<SearchField> {
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30)))),
           onChanged: (value) {
-            print('Search query : $value');
+            debugPrint('Search query : $value');
           },
         ),
       ),

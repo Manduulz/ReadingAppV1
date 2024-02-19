@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:readingappv1/bar_graph/bar_graph_page.dart';
 import 'package:readingappv1/classes/circle_loading.dart';
 import 'package:readingappv1/classes/voice_recorder.dart';
@@ -29,33 +31,53 @@ void main() {
   MyStorage.instance.init();
 
   runApp(
-    GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
-      getPages: [
-        GetPage(name: '/login', page: () => const LoginScreen()),
-        GetPage(name: '/signup', page: () => const SignUpScreen()),
-        GetPage(name: '/forgotpassword', page: () => const ForgotPasswordScreen()),
-        GetPage(name: '/screenlayout', page: () => const ScreenLayout()),
-        GetPage(name: '/navhome', page: () => const navHomeScreen()),
-        GetPage(name: '/statistic', page: () => const StatisticScreen()),
-        GetPage(name: '/profile', page: () => const ProfileScreen()),
-        GetPage(name: '/information', page: () => const InformationScreen(data: {})),
-        GetPage(name: '/privacy', page: () => const PrivacyScreen()),
-        GetPage(name: '/changeacc', page: () => const ChangeAccounts()),
-        GetPage(name: '/graph', page: () => const BarGraphBox()),
-        // GetPage(name: '/readinghome', page: () => const ReadingScreen()),
-        GetPage(name: '/books', page: () => const BooksScreen()),
-        GetPage(name: '/idiom', page: () => IdiomScreen()),
-        // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
-        GetPage(name: '/loading', page: () => const MyLoadingScreen()),
-        GetPage(name: '/voice', page: () => VoiceRecorder()),
-        GetPage(name: '/voice/record', page: () => const SpeakScreen()),
-        GetPage(name: '/voice/select', page: () => const SelectVoiceActionScreen()),
-        GetPage(name: '/speaking', page: () => const SpeakingScreen()),
+    GlobalLoaderOverlay(
+      useDefaultLoading: false,
+      overlayWidgetBuilder: (_) {
+        return Container(
+          color: Colors.black.withOpacity(0.6),
+          child: const Center(
+            child: SpinKitFadingCircle(
+              color: Colors.lightBlueAccent,
+              size: 50.0,
+            ),
+          ),
+        );
+      },
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/login',
+        getPages: [
+          GetPage(name: '/login', page: () => const LoginScreen()),
+          GetPage(name: '/signup', page: () => const SignUpScreen()),
+          GetPage(
+              name: '/forgotpassword',
+              page: () => const ForgotPasswordScreen()),
+          GetPage(name: '/screenlayout', page: () => const ScreenLayout()),
+          GetPage(name: '/navhome', page: () => const NavHomeScreen()),
+          GetPage(name: '/statistic', page: () => const StatisticScreen()),
+          GetPage(name: '/profile', page: () => const ProfileScreen()),
+          GetPage(
+              name: '/information',
+              page: () => const InformationScreen(data: {})),
+          GetPage(name: '/privacy', page: () => const PrivacyScreen()),
+          GetPage(name: '/changeacc', page: () => const ChangeAccounts()),
+          GetPage(name: '/graph', page: () => const BarGraphBox()),
+          // GetPage(name: '/readinghome', page: () => const ReadingScreen()),
+          GetPage(name: '/books', page: () => const BooksScreen()),
+          GetPage(name: '/idiom', page: () => const IdiomScreen()),
+          // GetPage(name: '/bookdetail', page: () => BookDetailScreen()),
+          GetPage(name: '/loading', page: () => const MyLoadingScreen()),
+          GetPage(name: '/voice', page: () => const VoiceRecorder()),
+          GetPage(name: '/voice/record', page: () => const SpeakScreen()),
+          GetPage(
+              name: '/voice/select',
+              page: () => const SelectVoiceActionScreen()),
+          GetPage(name: '/speaking', page: () => const SpeakingScreen()),
 
-        ...ReadingPages.pages,
-      ],
+          ...ReadingPages.pages,
+        ],
+      ),
     ),
   );
 }

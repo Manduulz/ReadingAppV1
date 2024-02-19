@@ -16,17 +16,19 @@ class _ListenScreenState extends State<ListenScreen> {
       appBar: AppBar(
         leadingWidth: 100,
         leading: TextButton(
-          onPressed: (){},
-          child: const Row(children: [
-            Icon(
-              PhosphorIcons.caret_left,
-              color: Colors.black,
-            ),
-            Text(
-              'Speak',
-              style: TextStyle(color: Colors.black),
-            )
-          ],),
+          onPressed: () {},
+          child: const Row(
+            children: [
+              Icon(
+                PhosphorIcons.caret_left,
+                color: Colors.black,
+              ),
+              Text(
+                'Speak',
+                style: TextStyle(color: Colors.black),
+              )
+            ],
+          ),
         ),
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -37,33 +39,26 @@ class _ListenScreenState extends State<ListenScreen> {
                 Text(
                   "Today's progress",
                   style: TextStyle(
-                    color: Colors.black12,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400
-                  ),
+                      color: Colors.black12,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400),
                 ),
-                Text.rich(
+                Text.rich(TextSpan(children: [
                   TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '9',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        )
-                      ),
-                      TextSpan(
-                        text: '/20 Clips recorded',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        )
-                      )
-                    ]
-                  )
-                )
+                      text: '9',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      )),
+                  TextSpan(
+                      text: '/20 Clips recorded',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ))
+                ]))
               ],
             )
           ],
@@ -111,38 +106,36 @@ class _ListenScreenState extends State<ListenScreen> {
           const SizedBox(height: 30),
           Expanded(
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.all(30),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shadows: const [
-                    BoxShadow(
-                      color: Color(0x3FCBD5E1),
-                      blurRadius: 10,
-                      offset: Offset(0,4),
-                      spreadRadius: 0,
-                    )
-                  ],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(30),
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+                color: Colors.white,
+                shadows: const [
+                  BoxShadow(
+                    color: Color(0x3FCBD5E1),
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                    spreadRadius: 0,
                   )
+                ],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                )),
+            child: Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: const Text(
+                'The family also shifts to Ramapuram',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
                 ),
-                child: Container(
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  child: const Text(
-                    'The family also shifts to Ramapuram',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              )
-          ),
+              ),
+            ),
+          )),
           const SizedBox(height: 30),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 30),
@@ -151,25 +144,24 @@ class _ListenScreenState extends State<ListenScreen> {
               width: 70,
               height: 70,
               decoration: ShapeDecoration(
-                color: const Color(0xFF22C55E),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(35),
-                ),
-                shadows: [
-                  const BoxShadow(
-                    color: Color(0x7F22C55E),
-                    blurRadius: 20,
-                    offset: Offset(0, 0),
-                    spreadRadius: 0,
-                  )
-                ]
-              ),
+                  color: const Color(0xFF22C55E),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35),
+                  ),
+                  shadows: const [
+                    BoxShadow(
+                      color: Color(0x7F22C55E),
+                      blurRadius: 20,
+                      offset: Offset(0, 0),
+                      spreadRadius: 0,
+                    )
+                  ]),
               child: IconButton(
-                onPressed: (){},
+                onPressed: () {},
                 icon: const Icon(
                   PhosphorIcons.play,
                   color: Colors.white,
-                    size: 30,
+                  size: 30,
                 ),
               ),
             ),
@@ -181,22 +173,21 @@ class _ListenScreenState extends State<ListenScreen> {
               children: [
                 Expanded(
                     child: ButtonWithTextAndIcon(
-                      text: 'Correct',
-                      type: 'Secondary',
-                      size: 'default',
-                      icon: PhosphorIcons.thumbs_up,
-                      onPressed: (){},
-                    )
-                ),
+                  text: 'Correct',
+                  type: 'Secondary',
+                  size: 'default',
+                  icon: PhosphorIcons.thumbs_up,
+                  onPressed: () {},
+                )),
                 const SizedBox(height: 20),
                 Expanded(
                     child: ButtonWithTextAndIcon(
-                      text: 'Incorrect',
-                      type: 'secondary',
-                      size: 'default',
-                      icon: PhosphorIcons.thumbs_down,
-                      onPressed: (){},
-                    ))
+                  text: 'Incorrect',
+                  type: 'secondary',
+                  size: 'default',
+                  icon: PhosphorIcons.thumbs_down,
+                  onPressed: () {},
+                ))
               ],
             ),
           )

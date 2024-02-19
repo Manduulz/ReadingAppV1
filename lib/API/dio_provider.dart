@@ -100,7 +100,7 @@ class _AuthInterceptor extends Interceptors {
   static const _refreshedExtra = "refreshed";
 
   @override
-  Future<void> OnError(
+  Future<void> onError(
       DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode != 401 ||
         err.requestOptions.extra[_refreshedExtra] == true) {
