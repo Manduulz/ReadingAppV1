@@ -21,12 +21,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final dio = Dio();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
   final TextEditingController _birthDayController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   RxBool isSuccess = RxBool(true);
   bool _obscureTextPass = true;
+
+  Map<String, String> genderMap = {'male': 'Эрэгтэй', 'female': 'Эмэгтэй'};
 
   Future<void> _selectDate(BuildContext context) async {
     DateTime selectedDate = DateTime.now();
@@ -53,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       'id': 20,
       'firstname': _firstNameController.text,
       'lastname': _lastNameController.text,
-      'gender': selectedGender,
+      'gender': selectedGender.toLowerCase(),
       'email': _emailController.text,
       'phone': _phoneNumberController.text,
       'birthday': _birthDayController.text,
@@ -164,6 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   _setSelectedGender(String gender) {
     setState(() {
       selectedGender = gender;
+      _genderController.text = genderMap[selectedGender] ?? "";
     });
   }
 
@@ -280,7 +284,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   height: 51,
                   child: TextField(
-                    controller: TextEditingController(text: selectedGender),
+                    controller: _genderController,
                     readOnly: true,
                     style: const TextStyle(
                         color: Color.fromRGBO(0, 124, 214, 0.50)),
