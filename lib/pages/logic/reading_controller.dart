@@ -178,7 +178,7 @@ class ReadingController extends GetxController {
     dio.FormData data = dio.FormData.fromMap(
       {
         "ContentId": state.bookId.value,
-        "Text": file.filename,
+        "Text": state.bookData["contentText"],
         "AudioFile": file,
         "AudioDuration": 60,
         "Type": "Normal",
