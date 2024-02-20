@@ -15,10 +15,13 @@ class ReadingScreen extends StatefulWidget {
 class _ReadingScreenState extends State<ReadingScreen> {
   late Map<String, dynamic>? _rxMap;
 
+  late int _bookId;
+
   @override
   void initState() {
     super.initState();
-    _rxMap = Get.arguments;
+    _rxMap = Get.arguments["book"];
+    _bookId = int.parse(Get.arguments["id"]);
   }
 
   @override
@@ -28,6 +31,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
         builder: (ReadingController controller) {
           controller.state.bookData.value = _rxMap ?? {};
           controller.state.isDone.value = true;
+          controller.state.bookId.value = _bookId;
 
           return Obx(() {
             Widget readerContent;

@@ -31,6 +31,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
     );
     isLoading.value = false;
 
+    log('book detail id : ${widget.bookId}');
     log('book detail response : $response');
     if (isSuccess) {
       bookDetail.value = response;
@@ -232,8 +233,10 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5))),
                             onPressed: () {
-                              Get.toNamed('/reading_screen',
-                                  arguments: bookDetail);
+                              Get.toNamed('/reading_screen', arguments: {
+                                "id": widget.bookId,
+                                "book": bookDetail
+                              });
                               // Get.toNamed('/voice');
                             },
                             child: Container(

@@ -166,10 +166,29 @@ class ReadingController extends GetxController {
     dio.MultipartFile file =
         await dio.MultipartFile.fromFile(_recordingPath ?? "");
 
+    debugPrint("file.id: ${state.bookId.value}");
     debugPrint("file.length: ${file.length}");
     debugPrint("file.filename: ${file.filename}");
     debugPrint(
         "DateTime.now().toIso8601String(): ${DateTime.now().toIso8601String()}");
+
+    dio.FormData data = dio.FormData.fromMap(
+      {
+        "ContentId": state.bookId.value,
+        "Text": file.filename,
+        "AudioFile": file,
+        "AudioDuration": 60,
+        "Type": "Normal",
+      },
+    );
+
+    for (var element in data.fields) {
+      print(element);
+    }
+
+    for (var element in data.files) {
+      print(element);
+    }
 
     var (isSuccess, response) = await ApiHelper.instance
         .sendHttpRequestFormData(
@@ -178,7 +197,7 @@ class ReadingController extends GetxController {
             method: Method.post,
             data: dio.FormData.fromMap(
               {
-                "ContentId": file.length,
+                "ContentId": state.bookId.value,
                 "Text": file.filename,
                 "AudioFile": file,
                 "AudioDuration": 60,
