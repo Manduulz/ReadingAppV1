@@ -4,6 +4,7 @@ import 'package:flutter_sound/flutter_sound.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -163,12 +164,14 @@ class ReadingController extends GetxController {
 
     context?.loaderOverlay.show();
 
-    dio.MultipartFile file =
-        await dio.MultipartFile.fromFile(_recordingPath ?? "");
+    dio.MultipartFile file = await dio.MultipartFile.fromFile(
+        _recordingPath ?? "",
+        filename: _recordingPath?.split("/").last,
+        contentType: MediaType("audio", "aac"));
 
     debugPrint("file.id: ${state.bookId.value}");
     debugPrint("file.length: ${file.length}");
-    debugPrint("file.filename: ${file.filename}");
+    debugPrint("file.filename: ${_recordingPath?.split("/").last}");
     debugPrint(
         "DateTime.now().toIso8601String(): ${DateTime.now().toIso8601String()}");
 
@@ -183,11 +186,11 @@ class ReadingController extends GetxController {
     );
 
     for (var element in data.fields) {
-      print(element);
+      debugPrint(element.toString());
     }
 
     for (var element in data.files) {
-      print(element);
+      debugPrint(element.toString());
     }
 
     var (isSuccess, response) = await ApiHelper.instance
@@ -195,15 +198,7 @@ class ReadingController extends GetxController {
             urlPath: '/api/data/add',
             contentType: 'multipart/form-data',
             method: Method.post,
-            data: dio.FormData.fromMap(
-              {
-                "ContentId": state.bookId.value,
-                "Text": file.filename,
-                "AudioFile": file,
-                "AudioDuration": 60,
-                "Type": "Normal",
-              },
-            ))
+            data: data)
         .catchError((error) {
       context?.loaderOverlay.hide();
       return (false, null);
