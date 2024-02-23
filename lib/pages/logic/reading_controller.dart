@@ -21,6 +21,7 @@ class ReadingController extends GetxController {
   Timer? timerMinute;
 
   int durationInSeconds = 0;
+  int lastReadCount = 0;
   SpeakingState speakingState = SpeakingState();
 
   String? _recordingPath;
@@ -216,13 +217,15 @@ class ReadingController extends GetxController {
       showTopSnackBar(
         Overlay.of(context!),
         CustomSnackBar.success(
-          message: 'Та минутанд ${state.readWords} үг уншлаа. Баяр хүргэе.',
+          message: 'Та минутанд $lastReadCount үг уншлаа. Баяр хүргэе.',
         ),
       );
     }
   }
 
   void resetValue() async {
+    lastReadCount = state.readWords.value;
+
     state.readWords.value = 0;
     state.isPlaying.value = false;
 
