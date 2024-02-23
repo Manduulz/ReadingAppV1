@@ -37,39 +37,42 @@ class _MyBarGraphState extends State<MyBarGraph> {
     //   suAmount: widget.daySummary[6],
     // );
     // dayBarData.initializeDayBarData();
-    return BarChart(
-      BarChartData(
-        maxY: 150,
-        minY: 0,
-        gridData: const FlGridData(show: false),
-        borderData: FlBorderData(show: false),
-        titlesData: const FlTitlesData(
-            leftTitles: AxisTitles(
-                sideTitles: SideTitles(
-              showTitles: false,
-            )),
-            topTitles: AxisTitles(
-                sideTitles: SideTitles(
-              showTitles: false,
-            )),
-            bottomTitles: AxisTitles(
-                sideTitles: SideTitles(
-              showTitles: true,
-              getTitlesWidget: getBottomTitles,
-            ))),
-        groupsSpace: 10,
-        barGroups: weeklyBarData.barData
-            .map(
-              (data) => BarChartGroupData(x: data.x, barRods: [
-                BarChartRodData(
-                    toY: data.y,
-                    color: Colors.blue,
-                    width: 10,
-                    backDrawRodData: BackgroundBarChartRodData(
-                        show: true, toY: 150, color: Colors.grey)),
-              ]),
-            )
-            .toList(),
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: BarChart(
+        BarChartData(
+          maxY: 150,
+          minY: 0,
+          gridData: const FlGridData(show: false),
+          borderData: FlBorderData(show: false),
+          titlesData: const FlTitlesData(
+              leftTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                showTitles: false,
+              )),
+              topTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                showTitles: false,
+              )),
+              bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: getBottomTitles,
+              ))),
+          groupsSpace: 10,
+          barGroups: weeklyBarData.barData
+              .map(
+                (data) => BarChartGroupData(x: data.x, barRods: [
+                  BarChartRodData(
+                      toY: data.y,
+                      color: Colors.blue,
+                      width: 10,
+                      backDrawRodData: BackgroundBarChartRodData(
+                          show: true, toY: 150, color: Colors.grey)),
+                ]),
+              )
+              .toList(),
+        ),
       ),
     );
   }

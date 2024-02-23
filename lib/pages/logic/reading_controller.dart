@@ -215,8 +215,8 @@ class ReadingController extends GetxController {
     if (isSuccess) {
       showTopSnackBar(
         Overlay.of(context!),
-        const CustomSnackBar.success(
-          message: 'Аудио хадгалагдлаа.',
+        CustomSnackBar.success(
+          message: 'Та минутанд ${state.readWords} үг уншлаа. Баяр хүргэе.',
         ),
       );
     }
